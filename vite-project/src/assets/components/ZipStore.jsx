@@ -1,27 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MdMyLocation } from "react-icons/md";
+import { PiCheckCircleBold } from "react-icons/pi";
 
 const ZipStore = () => {
   const [openZip, setOpenZip] = useState(false);
   const [inputValue, setInputValue] = useState("00220");
   const [postCodeNoti, setPostCodeNoti] = useState("");
-  function checkPostCode(postCode) {
-    const trimmed = postCode.trim();
-
-    if (trimmed === "") {
-      return "Postal code is required";
-    } else if (!/^\d{5}$/.test(trimmed)) {
-      return "The postal code must be five digits.";
+  const [savePostCode, setSavePostCode] = useState(false);
+  useEffect(() => {
+    if (savePostCode) {
+      const timer = setTimeout(() => setSavePostCode(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [savePostCode]);
+  const handleAutoFillZip = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+      return;
     }
 
-    return ""; // hợp lệ thì trả về chuỗi rỗng (không lỗi)
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+
+        // gọi API để lấy zip code từ lat/lng
+        try {
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+          );
+          const data = await response.json();
+          const zip = data.address.postcode || "";
+          setInputValue(zip);
+          setPostCodeNoti(checkPostCode(zip));
+        } catch (error) {
+          console.error("Error fetching postal code:", error);
+        }
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+      }
+    );
+  };
+  function checkPostCode(postCode) {
+    const trimmed = postCode.trim();
+    if (trimmed === "") return "Postal code is required";
+    else if (!/^\d{5}$/.test(trimmed))
+      return "The postal code must be five digits.";
+    return "";
   }
+
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
     setPostCodeNoti(checkPostCode(value));
   };
+
   return (
     <div>
       <StyledZipStore>
@@ -29,6 +63,7 @@ const ZipStore = () => {
         <hr />
         <button>Helsinki store</button>
       </StyledZipStore>
+
       {openZip && (
         <OVerLay onClick={() => setOpenZip(false)}>
           <StyledZipPopUp onClick={(e) => e.stopPropagation()}>
@@ -51,26 +86,50 @@ const ZipStore = () => {
                   value={inputValue}
                   onChange={handleInputChange}
                 />
-                <StyledLocationIcon />
+                <StyledLocationIcon onClick={handleAutoFillZip} />
               </div>
             </form>
             <hr />
-            <button>Save zip code</button>
+            <button
+              onClick={() => {
+                const err = checkPostCode(inputValue);
+                setPostCodeNoti(err);
+                if (!err) {
+                  setSavePostCode(true);
+                  setOpenZip(false);
+                } else {
+                  setSavePostCode(false);
+                }
+              }}
+            >
+              Save zip code
+            </button>
           </StyledZipPopUp>
         </OVerLay>
       )}
+
+      {/* chỉ render notification khi savePostCode = true */}
+
+      <StylePostCodeSaveNoti show={savePostCode}>
+        <div>
+          <StyledPiCheckCircleBold />
+        </div>
+        <p>Postcode is saved</p>
+        <CloseBtn onClick={() => setSavePostCode(false)}>x</CloseBtn>
+      </StylePostCodeSaveNoti>
     </div>
   );
 };
 
 export default ZipStore;
 
+// ----------- Styled Components (giữ nguyên style của ông) -----------
+
 const StyledZipStore = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-
   button {
     font-size: 1.2rem;
     font-weight: 600;
@@ -85,9 +144,9 @@ const StyledZipStore = styled.div`
     height: 2.5rem;
   }
 `;
+
 const StyledZipPopUp = styled.div`
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -97,7 +156,6 @@ const StyledZipPopUp = styled.div`
   border-radius: 1rem;
   width: 30rem;
   gap: 2rem;
-
   h2 {
     font-size: 2rem;
   }
@@ -144,7 +202,7 @@ const StyledZipPopUp = styled.div`
   hr {
     border: none;
     border-top: 1px solid ${({ theme }) => theme.colors.silver};
-    transform: scaleY(0.4); /* co lại chiều dày */
+    transform: scaleY(0.4);
     transform-origin: center;
   }
   button {
@@ -168,7 +226,6 @@ const OVerLay = styled.div`
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.overlay};
-
   z-index: 998;
   display: flex;
   align-items: center;
@@ -190,4 +247,56 @@ const StylePostNoti = styled.p`
   font-size: 1.1rem !important;
   color: ${({ theme }) => theme.colors.primary} !important;
   font-weight: 400 !important;
+`;
+
+const StylePostCodeSaveNoti = styled.div`
+  display: flex;
+  position: fixed;
+  transition: 0.3s;
+  bottom: 7rem;
+  left: 50%;
+  transform: translateX(-50%)
+    translateY(${(props) => (props.show ? "0" : "10px")});
+  opacity: ${(props) => (props.show ? 1 : 0)};
+  gap: 1rem;
+  align-items: stretch;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 1rem;
+  width: 20rem;
+  border: 0.2px solid #ccc;
+  background-color: #add8e68e;
+  div {
+    background-color: #06a55deb;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0.4rem;
+  }
+  p {
+    font-size: 1.3rem;
+    padding: 0.4rem;
+    flex: 1;
+  }
+`;
+
+const StyledPiCheckCircleBold = styled(PiCheckCircleBold)`
+  padding: 0.2rem;
+  color: white;
+  scale: 1.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CloseBtn = styled.p`
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  right: 0.2rem;
+  cursor: pointer;
+  font-size: 1.3rem !important;
+  color: #06a55deb;
 `;
