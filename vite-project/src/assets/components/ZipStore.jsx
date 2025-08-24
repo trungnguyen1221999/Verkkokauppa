@@ -14,8 +14,8 @@ const ZipStore = () => {
         <button>Helsinki store</button>
       </StyledZipStore>
       {openZip && (
-        <OVerLay>
-          <StyledZipPopUp>
+        <OVerLay onClick={() => setOpenZip(false)}>
+          <StyledZipPopUp onClick={(e) => e.stopPropagation()}>
             <h2>Enter your zip code</h2>
             <p className="close" onClick={() => setOpenZip(false)}>
               x
@@ -32,7 +32,7 @@ const ZipStore = () => {
                   placeholder="00220"
                   maxLength={5}
                   value={inputValue}
-                  onChange={(e) => setInputValue(e.value)}
+                  onChange={(e) => setInputValue(e.target.value)}
                 />
                 <StyledLocationIcon />
               </div>
