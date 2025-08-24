@@ -8,12 +8,20 @@ const ZipStore = () => {
   const [inputValue, setInputValue] = useState("00220");
   const [postCodeNoti, setPostCodeNoti] = useState("");
   const [savePostCode, setSavePostCode] = useState(false);
+  const [storeOpen, setStoreOpen] = useState(false);
+  const [storeSave, setStoreSave] = useState(false);
   useEffect(() => {
     if (savePostCode) {
       const timer = setTimeout(() => setSavePostCode(false), 3000);
       return () => clearTimeout(timer);
     }
   }, [savePostCode]);
+  useEffect(() => {
+    if (storeSave) {
+      const time = setTimeout(() => setStoreSave(false), 3000);
+      return () => clearTimeout(time);
+    }
+  }, [storeSave]);
   const handleAutoFillZip = () => {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser");
@@ -61,7 +69,7 @@ const ZipStore = () => {
       <StyledZipStore>
         <button onClick={() => setOpenZip(true)}>00220</button>
         <hr />
-        <button>Helsinki store</button>
+        <button onClick={() => setStoreOpen(true)}>Helsinki store</button>
       </StyledZipStore>
 
       {openZip && (
@@ -117,60 +125,83 @@ const ZipStore = () => {
         <p>Postcode is saved</p>
         <CloseBtn onClick={() => setSavePostCode(false)}>x</CloseBtn>
       </StylePostCodeSaveNoti>
-      <StyledLocationSelection>
-        <h3>Select a location</h3>
-        <StyledLabelDiv>
-          <Label>
-            <input type="radio" name="store" value="Helsinki" />
-            <FakeRadio />
-            <div>
-              <h5>Helsinki Store</h5>
-              <p>Tyynenmerenkatu 11, 00220 Helsinki</p>
-            </div>
-          </Label>
-          <Label>
-            <input type="radio" name="store" value="Oulu" />
-            <FakeRadio />
-            <div>
-              <h5>Oulu Store</h5>
-              <p>Kaakkurinkulma 4, 90410 Oulu</p>
-            </div>
-          </Label>
-          <Label>
-            <input type="radio" name="store" value="Pirkkala" />
-            <FakeRadio />
-            <div>
-              <h5>Pirkkala Store</h5>
-              <p>Saapastie 2, 33950 Pirkkala</p>
-            </div>
-          </Label>
-          <Label>
-            <input type="radio" name="store" value="Raisio" />
-            <FakeRadio />
-            <div>
-              <h5>Raisio Store</h5>
-              <p>Kuloistentie 3, 21280 Raisio</p>
-            </div>
-          </Label>
-          <Label>
-            <input type="radio" name="store" value="Vantaa" />
-            <FakeRadio />
-            <div>
-              <h5>Vantaa pickup warehouse</h5>
-              <p>Tyynenmerenkatu 11, 01530 Vantaa</p>
-            </div>
-          </Label>
-        </StyledLabelDiv>
-        <p>If you are not shopping in a store, choose:</p>
+      {storeOpen && (
+        <OVerLay onClick={() => setStoreOpen(false)}>
+          <StyledLocationSelection onClick={(e) => e.stopPropagation()}>
+            <h3>Select a location</h3>
+            <StyledLabelDiv>
+              <Label>
+                <input type="radio" name="store" value="Helsinki" />
+                <FakeRadio />
+                <div>
+                  <h5>Helsinki Store</h5>
+                  <p>Tyynenmerenkatu 11, 00220 Helsinki</p>
+                </div>
+              </Label>
+              <Label>
+                <input type="radio" name="store" value="Oulu" />
+                <FakeRadio />
+                <div>
+                  <h5>Oulu Store</h5>
+                  <p>Kaakkurinkulma 4, 90410 Oulu</p>
+                </div>
+              </Label>
+              <Label>
+                <input type="radio" name="store" value="Pirkkala" />
+                <FakeRadio />
+                <div>
+                  <h5>Pirkkala Store</h5>
+                  <p>Saapastie 2, 33950 Pirkkala</p>
+                </div>
+              </Label>
+              <Label>
+                <input type="radio" name="store" value="Raisio" />
+                <FakeRadio />
+                <div>
+                  <h5>Raisio Store</h5>
+                  <p>Kuloistentie 3, 21280 Raisio</p>
+                </div>
+              </Label>
+              <Label>
+                <input type="radio" name="store" value="Vantaa" />
+                <FakeRadio />
+                <div>
+                  <h5>Vantaa pickup warehouse</h5>
+                  <p>Tyynenmerenkatu 11, 01530 Vantaa</p>
+                </div>
+              </Label>
+            </StyledLabelDiv>
+            <p className="noStore">
+              If you are not shopping in a store, choose:
+            </p>
 
-        <Label>
-          <input type="radio" name="store" value="no-store" />
-          <FakeRadio />
-          <h5>No store selection</h5>
-        </Label>
-        <hr />
-        <button>Save</button>
-      </StyledLocationSelection>
+            <Label>
+              <input type="radio" name="store" value="no-store" />
+              <FakeRadio />
+              <h5>No store selection</h5>
+            </Label>
+            <hr />
+            <button
+              onClick={() => {
+                setStoreSave(true);
+                setStoreOpen(false);
+              }}
+            >
+              Save
+            </button>
+            <div className="close" onClick={() => setStoreOpen(false)}>
+              x
+            </div>
+          </StyledLocationSelection>
+        </OVerLay>
+      )}
+      <StylePostCodeSaveNoti show={storeSave}>
+        <div>
+          <StyledPiCheckCircleBold />
+        </div>
+        <p>Store is saved</p>
+        <CloseBtn onClick={() => setStoreSave(false)}>x</CloseBtn>
+      </StylePostCodeSaveNoti>
     </div>
   );
 };
@@ -196,6 +227,7 @@ const StyledZipStore = styled.div`
   hr {
     width: 0.3px;
     height: 2.5rem;
+    opacity: 0.6;
   }
 `;
 
@@ -405,6 +437,27 @@ const StyledLocationSelection = styled.div`
     margin-top: 1.5rem;
     opacity: 0.6;
   }
+  .noStore {
+    margin-bottom: 0.8rem;
+  }
+  .close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    font-size: 1.5rem;
+
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .close:hover {
+    background-color: #cccc;
+  }
 `;
 
 const StyledLabelDiv = styled.div`
@@ -423,6 +476,7 @@ const Label = styled.label`
   padding: 1rem;
   background-color: #cccccc3d;
   position: relative;
+  border: 0.5px solid #cccccca8;
 
   input {
     opacity: 0;
@@ -432,6 +486,10 @@ const Label = styled.label`
   div {
     display: flex;
     flex-direction: column;
+  }
+  &:hover,
+  &:active {
+    background-color: #add8e68e;
   }
 `;
 
