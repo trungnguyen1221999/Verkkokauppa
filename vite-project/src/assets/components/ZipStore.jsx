@@ -5,7 +5,23 @@ import { MdMyLocation } from "react-icons/md";
 const ZipStore = () => {
   const [openZip, setOpenZip] = useState(false);
   const [inputValue, setInputValue] = useState("00220");
+  const [postCodeNoti, setPostCodeNoti] = useState("");
+  function checkPostCode(postCode) {
+    const trimmed = postCode.trim();
 
+    if (trimmed === "") {
+      return "Postal code is required";
+    } else if (!/^\d{5}$/.test(trimmed)) {
+      return "The postal code must be five digits.";
+    }
+
+    return ""; // hợp lệ thì trả về chuỗi rỗng (không lỗi)
+  }
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+    setPostCodeNoti(checkPostCode(value));
+  };
   return (
     <div>
       <StyledZipStore>
@@ -24,6 +40,7 @@ const ZipStore = () => {
               <label htmlFor="postCode">
                 <h3>Delivery to postal code</h3>
                 <p>E.g. 14470</p>
+                <StylePostNoti>{postCodeNoti}</StylePostNoti>
               </label>
               <div className="input">
                 <input
@@ -32,7 +49,7 @@ const ZipStore = () => {
                   placeholder="00220"
                   maxLength={5}
                   value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
+                  onChange={handleInputChange}
                 />
                 <StyledLocationIcon />
               </div>
@@ -78,7 +95,7 @@ const StyledZipPopUp = styled.div`
   z-index: 999;
   padding: 1.5rem;
   border-radius: 1rem;
-  width: 29rem;
+  width: 30rem;
   gap: 2rem;
 
   h2 {
@@ -167,4 +184,10 @@ const StyledLocationIcon = styled(MdMyLocation)`
   padding: 0.3rem;
   border-radius: 50%;
   transform: scale(1.5);
+`;
+
+const StylePostNoti = styled.p`
+  font-size: 1.1rem !important;
+  color: ${({ theme }) => theme.colors.primary} !important;
+  font-weight: 400 !important;
 `;
