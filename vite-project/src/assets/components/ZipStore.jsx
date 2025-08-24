@@ -117,6 +117,60 @@ const ZipStore = () => {
         <p>Postcode is saved</p>
         <CloseBtn onClick={() => setSavePostCode(false)}>x</CloseBtn>
       </StylePostCodeSaveNoti>
+      <StyledLocationSelection>
+        <h3>Select a location</h3>
+        <StyledLabelDiv>
+          <Label>
+            <input type="radio" name="store" value="Helsinki" />
+            <FakeRadio />
+            <div>
+              <h5>Helsinki Store</h5>
+              <p>Tyynenmerenkatu 11, 00220 Helsinki</p>
+            </div>
+          </Label>
+          <Label>
+            <input type="radio" name="store" value="Oulu" />
+            <FakeRadio />
+            <div>
+              <h5>Oulu Store</h5>
+              <p>Kaakkurinkulma 4, 90410 Oulu</p>
+            </div>
+          </Label>
+          <Label>
+            <input type="radio" name="store" value="Pirkkala" />
+            <FakeRadio />
+            <div>
+              <h5>Pirkkala Store</h5>
+              <p>Saapastie 2, 33950 Pirkkala</p>
+            </div>
+          </Label>
+          <Label>
+            <input type="radio" name="store" value="Raisio" />
+            <FakeRadio />
+            <div>
+              <h5>Raisio Store</h5>
+              <p>Kuloistentie 3, 21280 Raisio</p>
+            </div>
+          </Label>
+          <Label>
+            <input type="radio" name="store" value="Vantaa" />
+            <FakeRadio />
+            <div>
+              <h5>Vantaa pickup warehouse</h5>
+              <p>Tyynenmerenkatu 11, 01530 Vantaa</p>
+            </div>
+          </Label>
+        </StyledLabelDiv>
+        <p>If you are not shopping in a store, choose:</p>
+
+        <Label>
+          <input type="radio" name="store" value="no-store" />
+          <FakeRadio />
+          <h5>No store selection</h5>
+        </Label>
+        <hr />
+        <button>Save</button>
+      </StyledLocationSelection>
     </div>
   );
 };
@@ -299,4 +353,99 @@ const CloseBtn = styled.p`
   cursor: pointer;
   font-size: 1.3rem !important;
   color: #06a55deb;
+`;
+
+const StyledLocationSelection = styled.div`
+  width: 38rem;
+  position: fixed;
+  background-color: #fff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.5px solid #cccc;
+  border-radius: 1rem;
+  padding: 1.6rem;
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    cursor: pointer;
+    background-color: #cccccc3d;
+
+    padding: 1rem;
+  }
+
+  p {
+    font-size: 1.3rem;
+    color: #535353;
+  }
+  button {
+    margin-top: 1.3rem;
+    color: white;
+    background-color: ${({ theme }) => theme.colors.cartBg};
+    border: 1px solid ${({ theme }) => theme.colors.cartBg};
+    border-radius: 10rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0.6rem;
+    opacity: 0.85;
+    transition: 0.3s;
+  }
+  button:hover {
+    opacity: 1;
+  }
+  hr {
+    margin-top: 1.5rem;
+    opacity: 0.6;
+  }
+`;
+
+const StyledLabelDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid #cccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+`;
+// Styled Components cho radio custom
+const Label = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #cccccc3d;
+  position: relative;
+
+  input {
+    opacity: 0;
+    position: absolute;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const FakeRadio = styled.span`
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 0.1rem;
+  ${Label} input:checked + & {
+    background-color: white;
+    border-color: ${({ theme }) => theme.colors.cartBg};
+    border: 4px solid ${({ theme }) => theme.colors.cartBg};
+    scale: 1.1;
+  }
 `;
