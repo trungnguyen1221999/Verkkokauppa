@@ -5,6 +5,11 @@ import { OVerLay } from "./ZipStore";
 
 const Search = () => {
   const [isFocused, setIsFocused] = useState(false);
+  const [input, setInput] = useState("");
+  const handleInput = (e) => {
+    const value = e.target.value;
+    setInput(value);
+  };
   const popular = ["pokemon", "rog ally", "lego", "tv", "microwave"];
 
   return (
@@ -13,6 +18,8 @@ const Search = () => {
         <StyleSearch>
           <label>
             <input
+              onChange={handleInput}
+              value={input}
               type="text"
               placeholder="Search in store"
               onFocus={() => setIsFocused(true)}
@@ -22,7 +29,7 @@ const Search = () => {
           </label>
         </StyleSearch>
 
-        {isFocused && (
+        {isFocused && !input.trim() && (
           <StyledDropDown>
             <p className="suosittua">Suosittua juuri nyt</p>
             {popular.map((item, index) => (
@@ -54,7 +61,7 @@ const SearchContainer = styled.div`
 
 const SearchWrapper = styled.div`
   position: relative;
-  width: 40rem;
+  width: 44rem;
   border: 2px solid transparent;
   overflow: hidden;
 
