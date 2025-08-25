@@ -307,7 +307,7 @@ const StyledZipPopUp = styled.div`
   }
 `;
 
-const OVerLay = styled.div`
+export const OVerLay = styled.div`
   position: fixed;
   top: 0;
   left: 0;

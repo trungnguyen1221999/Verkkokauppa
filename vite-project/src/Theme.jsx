@@ -7,7 +7,7 @@ const theme = {
     backgroundAlt: "#F1F1F1", // secondary background
     cartBg: "#1767F3", // cart background
     offer: "#FFDD02", // offer color
-    silver: "#827c7c",
+    silver: "#6e6a6a",
     overlay: "rgba(0, 0, 0, 0.5)",
   },
 };
