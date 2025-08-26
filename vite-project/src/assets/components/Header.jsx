@@ -3,6 +3,9 @@ import Logo from "./logo";
 import Container from "./Container";
 import ZipStore from "./ZipStore";
 import Search from "./Search";
+import Login from "./Login";
+import Favorite from "./Favorite";
+import Cart from "./Cart";
 
 const Header = () => {
   return (
@@ -11,6 +14,9 @@ const Header = () => {
         <Logo />
         <ZipStore />
         <Search />
+        <Login />
+        <Favorite />
+        <Cart />
       </Container>
     </header>
   );
