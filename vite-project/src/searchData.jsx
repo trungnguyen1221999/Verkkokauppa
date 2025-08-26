@@ -1,4 +1,4 @@
-export const searchSuggestions = [
+const searchSuggestions = [
   "iPhone 15",
   "Samsung Galaxy S24",
   "MacBook Air",
@@ -108,3 +108,4 @@ export const searchSuggestions = [
   "Desk Organizer",
   "Chair Cushion",
 ];
+export default searchSuggestions;
