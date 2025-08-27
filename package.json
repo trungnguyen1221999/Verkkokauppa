@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "browser-router": "^0.2.0"
+    "browser-router": "^0.2.0",
+    "react-icons": "^5.5.0"
   }
 }

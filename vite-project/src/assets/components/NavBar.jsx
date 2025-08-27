@@ -45,11 +45,16 @@ const NavBar = () => {
 
 export default NavBar;
 
+const StyledWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 const StyledNavBar = styled.nav`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 1rem 0;
 
   span {
     display: flex;

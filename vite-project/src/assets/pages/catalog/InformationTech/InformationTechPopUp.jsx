@@ -80,6 +80,11 @@ export const StyledComponentGroup = styled.div`
 
 export const StyledPopUp = styled.div`
   display: flex;
+  position: absolute;
+  top: 15rem;
+  right: 8rem;
+  left: 8rem;
+  z-index: 1000;
   justify-content: space-between;
   a {
     cursor: pointer;

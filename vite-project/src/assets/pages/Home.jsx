@@ -1,7 +1,13 @@
 import React from "react";
+import Annoucement from "../components/Annoucement";
+import Container from "../components/Container";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Container>
+      <Annoucement />
+    </Container>
+  );
 };
 
 export default Home;
