@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import catalogData from "../CatalogData";
 import styled from "styled-components";
-import InformationTechPopUp from "../pages/catalog/InformationTech/InformationTechPopUp";
-import GamingPopUp from "../pages/catalog/Gaming/GamingPopUp";
-import PicturePopUp from "../pages/catalog/Picture/PicturePopUp";
-import PhonePopUp from "../pages/catalog/Phone/PhonePopUp";
-import HomeAppPopUp from "../pages/catalog/HomeAppliance/HomeAppPopUp";
 
 const NavBar = () => {
   const [isHover, setHover] = useState(false);
@@ -39,20 +34,10 @@ const NavBar = () => {
           ))}
         </Right>
       </StyledNavBar>
-      {isHover && isTarget === 0 && (
-        <InformationTechPopUp onMouseEnter={() => setHover(true)} />
-      )}
-      {isHover && isTarget === 1 && (
-        <GamingPopUp onMouseEnter={() => setHover(true)} />
-      )}
-      {isHover && isTarget === 2 && (
-        <PicturePopUp onMouseEnter={() => setHover(true)} />
-      )}
-      {isHover && isTarget === 3 && (
-        <PhonePopUp onMouseEnter={() => setHover(true)} />
-      )}
-      {isHover && isTarget === 4 && (
-        <HomeAppPopUp onMouseEnter={() => setHover(true)} />
+      {isHover && (
+        <div onMouseEnter={() => setHover(true)}>
+          {catalogData.NavSection[isTarget]}
+        </div>
       )}
     </div>
   );

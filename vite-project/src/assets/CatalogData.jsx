@@ -1,4 +1,21 @@
+import GamingPopUp from "./pages/catalog/Gaming/GamingPopUp";
+import HomeAndGardenPopUp from "./pages/catalog/HomeAndGarden/HomeAndGardenPopUp";
+import HomeAppPopUp from "./pages/catalog/HomeAppliance/HomeAppPopUp";
+import InformationTechPopUp from "./pages/catalog/InformationTech/InformationTechPopUp";
+import LifestylePopUp from "./pages/catalog/Lifestyle/LifestylePopUp";
+import PhonePopUp from "./pages/catalog/Phone/PhonePopUp";
+import PicturePopUp from "./pages/catalog/Picture/PicturePopUp";
+
 const catalogData = {
+  NavSection: [
+    <InformationTechPopUp />,
+    <GamingPopUp />,
+    <PicturePopUp />,
+    <PhonePopUp />,
+    <HomeAppPopUp />,
+    <HomeAndGardenPopUp />,
+    <LifestylePopUp />,
+  ],
   NavLink: {
     toLeft: [
       "/catalog/tietotekniikka",

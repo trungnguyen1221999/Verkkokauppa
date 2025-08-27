@@ -59,7 +59,7 @@ export const StyledDetail = styled.div`
     font-size: 1.25rem;
   }
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   row-gap: 2rem;
   column-gap: 10rem;
   justify-content: space-between;
