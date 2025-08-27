@@ -20,9 +20,14 @@ const Login = () => {
 
       {isOpenLogin && (
         <OVerLay onClick={() => setOpenLogin(false)}>
-          <StyledLoginPopup onClick={(e) => e.stopPropagation()}>
+          <StyledLoginPopup
+            onClick={(e) => e.stopPropagation()}
+            isOpenLogin={isOpenLogin}
+          >
             <LoginForm isFocus={isFocus}>
-              <h3>Log in</h3>
+              <a>
+                <h3>Log in</h3>
+              </a>
               <h4>Log in with your email address and password.</h4>
               <p className="info">
                 Fields marked with an asterisk ({" "}
@@ -134,6 +139,11 @@ const StyledLoginPopup = styled.div`
   padding: 1rem;
   z-index: 19999 !important;
   width: 43rem;
+
+  transform: ${({ isOpenLogin }) =>
+    isOpenLogin ? "translateX(0)" : "translateX(100%)"}!important;
+  transition: transform 1s ease-in-out !important;
+  will-change: transform;
   hr {
     margin: 1.5rem 0;
     opacity: 0.85;

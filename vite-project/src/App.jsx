@@ -16,6 +16,8 @@ import Poistoerat from "./assets/pages/Poistoerat";
 import Yrityksille from "./assets/pages/Yrityksille";
 import Oppaat from "./assets/pages/Oppaat";
 import Ajankohtaista from "./assets/pages/Ajankohtaista";
+import InformationTech from "./assets/pages/catalog/InformationTech";
+import Palvelut from "./assets/pages/Palvelut";
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -23,6 +25,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/etusivu" element={<Home />} />
+        <Route path="/catalog/tietotekniikka" element={<InformationTech />} />
         <Route path="/catalog/pelaaminen" element={<Gaming />} />
         <Route path="/catalog/kuva-ja-aani" element={<PictureSound />} />
         <Route
@@ -41,6 +44,7 @@ function App() {
         <Route path="/poistoerat" element={<Poistoerat />} />
         <Route path="/yritysmyynti" element={<Yrityksille />} />
         <Route path="/artikkelit" element={<Oppaat />} />
+        <Route path="/palvelut" element={<Palvelut />} />
         <Route path="/ajankohtaista" element={<Ajankohtaista />} />
       </Routes>
     </ThemeProvider>

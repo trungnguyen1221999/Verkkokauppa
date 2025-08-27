@@ -14,8 +14,8 @@ export default Favorite;
 
 const StyledHeart = styled(FaRegHeart)`
   cursor: pointer;
-  scale: 2.5;
-  padding: 0.4rem;
+  font-size: 3.5rem;
+  padding: 0.8rem;
   border-radius: 50%;
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundAlt};

@@ -6,6 +6,7 @@ import Search from "./Search";
 import Login from "./Login";
 import Favorite from "./Favorite";
 import Cart from "./Cart";
+import NavBar from "./NavBar";
 
 const Header = () => {
   return (
@@ -17,6 +18,9 @@ const Header = () => {
         <Login />
         <Favorite />
         <Cart />
+      </Container>
+      <Container>
+        <NavBar />
       </Container>
     </header>
   );
