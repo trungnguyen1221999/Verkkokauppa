@@ -1,4 +1,4 @@
-const infomationNavData = {
+const InfomationNavData = {
   sum: [
     "Offers - Information Technology",
     "Depreciation items",
@@ -16,7 +16,7 @@ const infomationNavData = {
     "Computer components",
     "Network Devices",
     "Software and Licenses",
-    "Office and office",
+    "Office",
     "Digital gift cards",
   ],
 
@@ -74,7 +74,19 @@ const infomationNavData = {
       "Operating systems",
       "Volume Licenses",
     ],
+    Office: [
+      "Office Technology",
+      "Office furniture",
+      "Office supplies",
+      "Cleansing",
+      "Batteries",
+      "Cable management",
+      "Calculators",
+      "Writing and presentation boards",
+      "Barcode Scanners",
+      "Packaging Supplies",
+    ],
   },
 };
 
-export default infomationNavData;
+export default InfomationNavData;

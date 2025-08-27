@@ -1,26 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import catalogData from "../CatalogData";
 import styled from "styled-components";
+import InformationTechPopUp from "../pages/catalog/InformationTech/InformationTechPopUp";
+import GamingPopUp from "../pages/catalog/Gaming/GamingPopUp";
+import PicturePopUp from "../pages/catalog/Picture/PicturePopUp";
+import PhonePopUp from "../pages/catalog/Phone/PhonePopUp";
+import HomeAppPopUp from "../pages/catalog/HomeAppliance/HomeAppPopUp";
 
 const NavBar = () => {
+  const [isHover, setHover] = useState(false);
+  const [isTarget, setTarget] = useState(null);
+  const resetHover = () => {
+    setHover(false);
+  };
   return (
-    <StyledNavBar>
-      <Left>
-        {catalogData.NavLink.toLeft.map((item, index) => (
-          <NavLink key={index} to={item} end>
-            {catalogData.NavLink.titleLeft[index]}
-          </NavLink>
-        ))}
-      </Left>
-      <Right>
-        {catalogData.NavLink.toRight.map((item, index) => (
-          <NavLink key={index} to={item} end>
-            {catalogData.NavLink.titleRight[index]}
-          </NavLink>
-        ))}
-      </Right>
-    </StyledNavBar>
+    <div style={{ width: "100%" }} onMouseLeave={resetHover}>
+      <StyledNavBar>
+        <Left>
+          {catalogData.NavLink.toLeft.map((item, index) => (
+            <NavLink
+              key={index}
+              to={item}
+              onMouseEnter={() => {
+                setHover(true);
+                setTarget(index);
+              }}
+            >
+              {catalogData.NavLink.titleLeft[index]}
+            </NavLink>
+          ))}
+        </Left>
+        <Right>
+          {catalogData.NavLink.toRight.map((item, index) => (
+            <NavLink key={index} to={item}>
+              {catalogData.NavLink.titleRight[index]}
+            </NavLink>
+          ))}
+        </Right>
+      </StyledNavBar>
+      {isHover && isTarget === 0 && (
+        <InformationTechPopUp onMouseEnter={() => setHover(true)} />
+      )}
+      {isHover && isTarget === 1 && (
+        <GamingPopUp onMouseEnter={() => setHover(true)} />
+      )}
+      {isHover && isTarget === 2 && (
+        <PicturePopUp onMouseEnter={() => setHover(true)} />
+      )}
+      {isHover && isTarget === 3 && (
+        <PhonePopUp onMouseEnter={() => setHover(true)} />
+      )}
+      {isHover && isTarget === 4 && (
+        <HomeAppPopUp onMouseEnter={() => setHover(true)} />
+      )}
+    </div>
   );
 };
 
@@ -39,7 +73,6 @@ const StyledNavBar = styled.nav`
 
   a {
     font-weight: 600;
-    margin-bottom: 2rem;
     font-size: 1.25rem;
     padding-bottom: 1.5rem;
     position: relative;

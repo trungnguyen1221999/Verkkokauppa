@@ -12,11 +12,11 @@ const catalogData = {
     titleLeft: [
       "Information technology",
       "Gaming",
-      "Picture & Sound",
+      "Picture and Sound",
       "Phones, Tablets & Watches",
       "Domestic Appliances",
-      "Home & Yard",
-      "Hobbies & Leisure",
+      "Home and Yard",
+      "Hobbies and Leisure",
     ],
 
     toRight: [

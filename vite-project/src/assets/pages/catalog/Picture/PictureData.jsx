@@ -1,0 +1,83 @@
+const PictureData = {
+  sum: [
+    "Offers",
+    "Depreciation items",
+    "Guides and articles",
+    "New arrivals",
+    "Most Bought Top 50",
+    " New game releases",
+    "To your doorstep in an hour",
+  ],
+  header: [
+    "TV & Players",
+    "Headset",
+    "Audio and hi-fi",
+    "Music",
+    "Cameras and drones",
+    "Projectors",
+    "Audio and video cables",
+  ],
+
+  components: {
+    TV: [
+      "TVs",
+      "Streaming and media players",
+      "Set-top boxes",
+      "Blu-ray and DVD",
+      "TV stands and mounts",
+      "TV accessories",
+    ],
+    Headset: [
+      "Earphones",
+      "Noise cancelling headphones",
+      "Headband headphones",
+      "Sports Headphones",
+      "Gaming headset",
+      "Office Headset",
+      "Used headphones",
+      "Headphone accessories",
+    ],
+    Audio: [
+      "Speakers",
+      "Amplifiers",
+
+      "Turntables and media players",
+      "Small hi-fi",
+      "Mounts and stands",
+      "Voice Memos & Microphones",
+    ],
+    Music: [
+      "Microphones",
+      "Players",
+      "Amplifiers for musical instruments",
+      "DJ equipment",
+      "Studio equipment",
+      "PA and Presentation Technology",
+      "Music accessories",
+      "Music Software",
+      "Audio Cables & Adapters",
+    ],
+    Cameras: [
+      "The drone",
+      "Slr",
+      " Camera lenses and filters",
+      "Action and 360 cameras",
+      "Digital, instant and car cameras",
+      "Video recording",
+      "Photography Supplies & Peripherals",
+      "Camera Bags",
+      "Binoculars and telescopes",
+    ],
+    Projectors: [
+      "Home Theater Projectors",
+      "Gaming Projectors",
+      "Projectors for the office",
+      "Projector Packages",
+      "Projector Accessories",
+      "Screens",
+    ],
+    Video: ["Audio Cables & Adapters", "Video Cables & Adapters"],
+  },
+};
+
+export default PictureData;
