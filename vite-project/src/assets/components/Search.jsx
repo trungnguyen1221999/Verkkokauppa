@@ -83,7 +83,7 @@ export default Search;
 const SearchContainer = styled.div`
   position: relative;
   display: inline-block;
-  margin: 0 33rem;
+  margin: 0 26rem;
 `;
 
 const SearchWrapper = styled.div`

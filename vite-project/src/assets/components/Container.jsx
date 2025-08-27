@@ -11,5 +11,5 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 8rem;
+  margin: 1.5rem 6rem;
 `;

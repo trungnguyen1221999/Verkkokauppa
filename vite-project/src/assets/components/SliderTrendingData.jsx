@@ -1,0 +1,36 @@
+const SliderTrendingData = {
+  items: [
+    "Bidding",
+    "Components",
+    "Televisions",
+    "Laptops",
+    "Phones",
+    "Peripherals",
+    "Seasonal products up to -50%",
+    "Free shipping on selected TVs",
+    "Remote workstation in order",
+    "Products at a loss price",
+    "Smart home",
+    "Headphones",
+    "Network equipment",
+    "Game consoles",
+  ],
+  img: [
+    "https://images.ctfassets.net/nggsuamsum0l/2B7fiS8zdlktCvwOtpYvX0/fcadf6a6921628206a05424571493b0a/_50__kokotausta.png",
+    "https://images.ctfassets.net/nggsuamsum0l/2fswtD9UL9fzyHLzo99VAp/2b7601dfb1bca746cbc154a470dab205/Komponentit_naytonohjain600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/7ul38kXnrDer28JX4mAnmj/2d6353df38b14e892a8993a32b09a883/Televisiot_LG600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/5n54QH5wRL0KzkLocNvAqu/b84476d264f8889d666d24e6a05036ca/MAcbook_air_15_i600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/1n4Vo8Ete24rnBKNhq0xGl/b0263b910aaf3150219fc55c7ce5253a/Puhelimet_16e600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/2tJdoIPbDvGHITaoFtBM71/ef9d46246e0368e5558d7ac795d2dada/Oheislaitteet600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/3Jlm2iCNreY6tCCpA1bSXA/a4e8d1e37536810284943aa97dd1cbea/Sesonki_tarjoukset.png",
+    "https://images.ctfassets.net/nggsuamsum0l/U1IP3nV03n0M4alIfD2H2/55866a64f48e4e3e24053e30f94922f2/Ilmaiset_kotiinkuljetukset_TV600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/3JGeAHZ1sypcIRVfmViwxS/c0f7ddf37059c1a91eb3f7948d2a23fb/Eta%C3%8C_tyo%C3%8C_piste-kuntoon.png",
+    "https://images.ctfassets.net/nggsuamsum0l/20KK6QRiwlkBKei7CCyluu/9b7614377b7b2c4ea459e9a62bc21541/Poistoerat600x500.png",
+    "https://images.ctfassets.net/nggsuamsum0l/1J5KYKdg5plXipRDImMFgu/f153d37913b39d45954a0d11239ba16f/2_868180-1390x1506.jpg",
+    "https://images.ctfassets.net/nggsuamsum0l/57QrlHQL3zypslIWUBO2NQ/e12ed31ebbe8409fee84c3e463c1f5da/AirPods-Pro-2-keskell%C3%A4.png",
+    "https://images.ctfassets.net/nggsuamsum0l/5Y9kLLK5S1q4smwLWQNXel/8372ee04806bd7f4fc5bef18ddf97d50/Verkkolaite.png",
+    "https://images.ctfassets.net/nggsuamsum0l/OVwlD8emD3tykHlRvYdPh/9118f7d273a75e10ef5258a461c29ca5/Pelaaminen600x500.png",
+  ],
+};
+
+export default SliderTrendingData;
