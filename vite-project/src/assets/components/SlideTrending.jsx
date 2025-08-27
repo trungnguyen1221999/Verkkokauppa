@@ -88,7 +88,7 @@ const StyledSlide = styled.div`
   overflow: auto;
   max-width: calc(100vw - 12rem);
   p {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
   }
   a {
