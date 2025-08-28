@@ -90,6 +90,7 @@ const StyledSlide = styled.div`
   p {
     font-size: 1.3rem;
     font-weight: 600;
+    margin-bottom: 1rem;
   }
   a {
     cursor: pointer;
@@ -120,4 +121,6 @@ const StyledWrap = styled.div`
       }
     }
   }
+  max-width: 1600px;
+  margin-bottom: 1.5rem;
 `;
