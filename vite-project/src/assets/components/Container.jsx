@@ -12,5 +12,5 @@ const StyledContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem auto;
-  max-width: 1600px;
+  max-width: 90vw;
 `;

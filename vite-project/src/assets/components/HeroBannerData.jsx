@@ -12,14 +12,14 @@ const HeroBannerData = {
   ],
   img: [
     "./images/macbook1.png",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/63/2_980615-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/59/2_980609-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/59/2_980609-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/63/2_980615-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/59/2_980609-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/59/2_980609-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/63/2_980615-4000x4000.jpeg",
-    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/59/2_980609-4000x4000.jpeg",
+    "./images/macbook2.png",
+    "./images/macbook1.png",
+    "./images/macbook2.png",
+    "./images/macbook1.png",
+    "./images/macbook2.png",
+    "./images/macbook1.png",
+    "./images/macbook2.png",
+    "./images/macbook2.png",
   ],
 
   price: [

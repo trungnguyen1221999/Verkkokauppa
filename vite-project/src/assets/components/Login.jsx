@@ -119,7 +119,7 @@ const StyledLogin = styled.div`
     background-color: ${({ theme }) => theme.colors.backgroundAlt};
   }
   p {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 600;
   }
 
@@ -273,7 +273,7 @@ const LoginBy = styled.div`
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
   gap: 1rem;
   h3 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     margin-bottom: 2rem;
   }
   div {

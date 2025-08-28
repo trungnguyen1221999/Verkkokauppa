@@ -3,6 +3,8 @@ import { FaArrowRight } from "react-icons/fa6";
 import styled from "styled-components";
 import Container from "./Container";
 import Item from "./Item";
+import HeroBannerData from "./HeroBannerData";
+import createItem from "./createItemFunction";
 
 const HeroBanner = () => {
   return (
@@ -16,7 +18,7 @@ const HeroBanner = () => {
           </p>
           <div className="btn">
             <button>Explore</button>
-            <FaArrowRight />{" "}
+            <FaArrowRight />
           </div>
         </StyleLeft>
         <StyledImg
@@ -24,9 +26,11 @@ const HeroBanner = () => {
           alt=""
         />
       </Container>
-      <div>
-        <Item />
-      </div>
+      <StyledItemList>
+        {HeroBannerData.items.map((item, index) =>
+          createItem(HeroBannerData, index)
+        )}
+      </StyledItemList>
     </StyledWrap>
   );
 };
@@ -39,7 +43,7 @@ const StyleLeft = styled.div`
   justify-content: center;
   gap: 2rem;
   h2 {
-    font-size: 5rem;
+    font-size: 4.5rem;
     font-style: italic;
   }
   .btn {
@@ -52,7 +56,7 @@ const StyleLeft = styled.div`
     justify-content: space-between;
     gap: 1rem;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.95;
     &:hover {
       opacity: 1;
     }
@@ -77,4 +81,18 @@ const StyledWrap = styled.div`
   width: 100vw;
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
   padding: 1rem 0;
+  position: relative;
+`;
+
+const StyledItemList = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1.5rem auto;
+  max-width: 90vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(80%);
 `;

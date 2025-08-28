@@ -83,12 +83,12 @@ export const StyledPopUp = styled.div`
   position: absolute;
   max-height: 53rem;
   overflow: auto;
-  top: 15rem;
+  top: 13rem;
   left: auto;
 
   width: 100%;
   z-index: 1000;
-  max-width: 1600px;
+  max-width: 90vw;
   justify-content: space-between;
   a {
     cursor: pointer;

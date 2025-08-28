@@ -58,12 +58,13 @@ const StyledNavBar = styled.nav`
 
   span {
     display: flex;
+    justify-content: space-between;
     gap: 1rem;
   }
 
   a {
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     padding-bottom: 1.5rem;
     position: relative;
     display: inline-block;

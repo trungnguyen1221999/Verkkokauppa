@@ -121,6 +121,6 @@ const StyledWrap = styled.div`
       }
     }
   }
-  max-width: 1600px;
+  max-width: 90vw;
   margin-bottom: 1.5rem;
 `;

@@ -83,7 +83,8 @@ export default Search;
 const SearchContainer = styled.div`
   position: relative;
   display: inline-block;
-  margin: 0 26rem;
+  max-height: 50vw;
+  padding: 0 20rem;
 `;
 
 const SearchWrapper = styled.div`

@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     font-family: Antarctica, "Helvetica Neue", Helvetica, Arial, sans-serif;
      background-color: ${({ theme }) => theme.colors.background};
+     scroll-behavior: smooth;
+     max-width: 100vw;
+     overflow-x: hidden;
   }
   img, picture, video, canvas, svg {
    object-fit: cover;
