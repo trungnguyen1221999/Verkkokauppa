@@ -4,6 +4,8 @@ import Container from "../components/Container";
 import SlideTrending from "../components/SlideTrending";
 import HeroBanner from "../components/HeroBanner";
 import ForShopping from "../components/ForShopping";
+import TrendingNow from "../components/TrendingNow";
+import ProductDetailSlide from "../components/ProductDetailSlide";
 
 const Home = () => {
   return (
@@ -16,6 +18,9 @@ const Home = () => {
       </Container>
       <HeroBanner />
       <ForShopping />
+
+      <TrendingNow />
+      <ProductDetailSlide />
     </>
   );
 };
