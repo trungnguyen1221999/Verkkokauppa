@@ -37,7 +37,7 @@ const StyledItem = styled.div`
   h5 {
     font-size: 1.2rem;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* số dòng tối đa */
+    -webkit-line-clamp: 2; /* số dòng tối đa */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -47,6 +47,7 @@ const StyledItem = styled.div`
 const StyledUpper = styled.div`
   display: inline-block;
   position: relative;
+  cursor: pointer;
   p {
     font-size: 1rem;
     font-weight: 900;

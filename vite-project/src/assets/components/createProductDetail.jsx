@@ -118,6 +118,10 @@ const StyledContainer = styled.div`
       color: ${({ theme }) => theme.colors.cartBg};
       font-size: 2.7rem;
       cursor: pointer;
+      background-color: #fff;
+      border-radius: 50%;
+      scale: 1.2;
+      border: 1px solid ${({ theme }) => theme.colors.cartBg};
       &:hover {
         opacity: 0.8;
       }

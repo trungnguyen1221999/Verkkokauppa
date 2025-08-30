@@ -1,0 +1,43 @@
+const TVData = {
+  items: [
+    'LG UR78 55" 4K LED TV',
+    'ProCaster 65SL901HN 65" 4K Android LED TV',
+    'LG 65" UA75 – 4K LED TV',
+    'LG 43" UT73 – 4K LED TV',
+    'FPD 40" G700 – Full HD LED Google TV',
+    'LG 65" QNED 80 – 4K TV (2025)',
+    'FPD 55" G900 – 4K LED Google TV',
+    'LG 55" OLED evo C4 – 4K TV (C41)',
+  ],
+  img: [
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/16/2_903322-4000x2502.jpg",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/70/2_870778-4000x2534.jpg",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/39/2_990010-2254x1395.jpeg",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/90/2_925501-4000x2577.jpg##",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/46/2_982193-1785x1142.jpeg",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/5/2_988102-2267x1479.jpeg##",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/1/2_951467-1726x1108.jpg",
+    "https://cdn.verk.net/kuvastin/w:472/h:360/rt:fit/q:80/ex:1/sh:0.5/plain/images/5/2_925453-4000x2485.jpeg",
+  ],
+  price: [
+    "949.00",
+    "1,269.00",
+    "1,519.00",
+    "949.00",
+    "1,269.00",
+    "1,519.00",
+    "949.00",
+    "1,269.00",
+  ],
+  oldPrice: [
+    "1,599.00",
+    "1,509.00",
+    "1,649.00",
+    "1,099.00",
+    "1,399.00",
+    "1,649.00",
+    "1,099.00",
+    "1,399.00",
+  ],
+};
+export default TVData;

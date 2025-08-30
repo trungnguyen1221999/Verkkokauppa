@@ -1,40 +1,44 @@
-import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import styled from "styled-components";
-import Container from "./Container";
-import HeroBannerData from "./HeroBannerData";
-import createItem from "./createItemFunction";
 
-const HeroBanner = () => {
+import Container from "../Container";
+import createItem from "./../createItemFunction";
+
+const createHeroBanner = ({ data, title, desc, btn, img, imageFirst }) => {
   return (
-    <StyledWrap>
-      <Container>
-        <StyleLeft>
-          <h2>GET MACBOOK AIR M4 AT A SPECIAL PRICE</h2>
-          <p>
-            MackBook Air M4 is built to last. Offer prices starting from 899€ -
-            act quickly and pick up your own!
-          </p>
-          <div className="btn">
-            <button>Explore</button>
-            <FaArrowRight />
-          </div>
-        </StyleLeft>
-        <StyledImg
-          src="https://images.ctfassets.net/nggsuamsum0l/4f8K2FgRpJSU4M8lOnuXug/db09c45460d4005aecd6cf25dcdc1ed7/Apple_MacBook_Air_BTS_20250379_teaser_1920x1280_1_.jpg"
-          alt=""
-        />
-      </Container>
-      <StyledItemList>
-        {HeroBannerData.items.map((item, index) =>
-          createItem(HeroBannerData, index)
-        )}
-      </StyledItemList>
-    </StyledWrap>
+    <>
+      <StyledWrap>
+        <StyledContainer imageFirst={imageFirst}>
+          <StyleLeft>
+            <h2>{title}</h2>
+            <p>{desc}</p>
+            <div className="btn">
+              <button>{btn}</button>
+              <FaArrowRight />
+            </div>
+          </StyleLeft>
+          <StyledImg src={img} alt="" />
+        </StyledContainer>
+        <StyledItemList>
+          {data.items.map((item, index) => createItem(data, index))}
+        </StyledItemList>
+      </StyledWrap>
+    </>
   );
 };
 
-export default HeroBanner;
+export default createHeroBanner;
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem auto;
+  max-width: 90vw;
+  gap: 5rem;
+  flex-direction: ${({ imageFirst }) =>
+    imageFirst ? "row-reverse" : "row"}!important;
+`;
 
 const StyleLeft = styled.div`
   display: flex;
@@ -91,7 +95,7 @@ const StyledItemList = styled.div`
   max-width: 90vw;
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 3.5rem;
   right: 0;
-  transform: translateY(80%);
+  transform: translateY(60%);
 `;

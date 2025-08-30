@@ -6,6 +6,8 @@ import HeroBanner from "../components/HeroBanner";
 import ForShopping from "../components/ForShopping";
 import TrendingNow from "../components/TrendingNow";
 import ProductDetailSlide from "../components/ProductDetailSlide";
+import TVBanner from "../components/TVBanner";
+import BlogSaleOffSlide from "../components/funtion/BlogSaleOffSlide";
 
 const Home = () => {
   return (
@@ -21,6 +23,8 @@ const Home = () => {
 
       <TrendingNow />
       <ProductDetailSlide />
+      <TVBanner />
+      <BlogSaleOffSlide />
     </>
   );
 };

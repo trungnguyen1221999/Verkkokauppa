@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import styled from "styled-components";
+import { FaArrowRight } from "react-icons/fa6";
 import {
   FaRegArrowAltCircleRight,
   FaRegArrowAltCircleLeft,
 } from "react-icons/fa";
 
-function CreateSlideFunction({ itemData, title }) {
+const createBlogSlide = ({ data, heading, btn }) => {
   const [isHover, setHover] = useState(false);
   const [visibleLeft, setVisibleLeft] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -37,27 +39,26 @@ function CreateSlideFunction({ itemData, title }) {
   const handleGoLeft = () => {
     slideRef.current.scrollBy({ left: -400, behavior: "smooth" });
   };
-
   return (
-    <StyledWrap onMouseLeave={() => setHover(false)}>
-      <h3>{title}</h3>
-      <StyledSlide
+    <StyledContainer onMouseLeave={() => setHover(false)}>
+      <h3>{heading}</h3>
+      <StyledList
         onMouseEnter={() => setHover(true)}
         ref={slideRef}
         onScroll={hideArrow}
       >
-        {(itemData && Array.isArray(itemData.img) ? itemData.img : []).map(
-          (item, index) => (
-            <a key={index}>
-              <div>
-                <img src={item} alt={itemData?.items?.[index] ?? ""} />
-                <p>{itemData?.items?.[index] ?? ""}</p>
-              </div>
-            </a>
-          )
-        )}
-      </StyledSlide>
-
+        {data.title.map((item, index) => (
+          <StyledItem key={index}>
+            <img src={data.img[index]} alt="" />
+            <h4>{item}</h4>
+            <p>{data.des[index]}</p>
+            <div className="btn">
+              <a href="">{btn}</a>
+              <FaArrowRight />
+            </div>
+          </StyledItem>
+        ))}
+      </StyledList>
       {isHover && (
         <div className="icon">
           <FaRegArrowAltCircleLeft
@@ -70,41 +71,21 @@ function CreateSlideFunction({ itemData, title }) {
           />
         </div>
       )}
-    </StyledWrap>
+    </StyledContainer>
   );
-}
+};
 
-export default CreateSlideFunction;
+export default createBlogSlide;
 
-const StyledSlide = styled.div`
+const StyledContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-  img {
-    width: auto;
-    height: 10rem;
-    padding: 2rem;
-    background-color: ${({ theme }) => theme.colors.backgroundAlt};
-    &:hover {
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-  }
-  overflow: auto;
+  margin: 1.5rem auto;
+  margin-top: 13rem;
   max-width: 90vw;
-  p {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  a {
-    cursor: pointer;
-  }
-`;
-
-const StyledWrap = styled.div`
   h3 {
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
   }
   position: relative;
   .icon {
@@ -129,7 +110,40 @@ const StyledWrap = styled.div`
       }
     }
   }
+`;
+
+const StyledList = styled.div`
+  display: flex;
+  gap: 1.5rem;
   max-width: 90vw;
-  margin-bottom: 1.5rem;
-  margin: 1.5rem auto;
+  overflow-x: auto;
+`;
+const StyledItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  img {
+    width: 37rem;
+    border-radius: 2rem;
+  }
+  h4 {
+    font-size: 1.6rem;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+  .btn {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: ${({ theme }) => theme.colors.cartBg};
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
