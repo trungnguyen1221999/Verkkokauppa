@@ -8,6 +8,8 @@ import TrendingNow from "../components/TrendingNow";
 import ProductDetailSlide from "../components/ProductDetailSlide";
 import TVBanner from "../components/TVBanner";
 import BlogSaleOffSlide from "../components/funtion/BlogSaleOffSlide";
+import TwoSection from "../components/TwoSection";
+import Banner3 from "../components/Banner3";
 
 const Home = () => {
   return (
@@ -25,6 +27,8 @@ const Home = () => {
       <ProductDetailSlide />
       <TVBanner />
       <BlogSaleOffSlide />
+      <TwoSection />
+      <Banner3 />
     </>
   );
 };

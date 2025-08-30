@@ -2,9 +2,44 @@ import { FaArrowRight } from "react-icons/fa6";
 import styled from "styled-components";
 
 import Container from "../Container";
-import createItem from "./../createItemFunction";
 
+import React, { useEffect, useState } from "react";
+
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { useRef } from "react";
+import createItem from "../createItemFunction";
 const createHeroBanner = ({ data, title, desc, btn, img, imageFirst }) => {
+  const [isHover, setHover] = useState(false);
+  const [visibleLeft, setVisibleLeft] = useState(false);
+  const [visibleRight, setVisibleRight] = useState(false);
+  const slideRef = useRef(null);
+
+  const hideArrow = () => {
+    const el = slideRef.current;
+    if (!el) return;
+    const scrollPercent = el.scrollLeft / (el.scrollWidth - el.clientWidth);
+    if (scrollPercent < 0.01) {
+      setVisibleLeft(false);
+      setVisibleRight(true);
+    } else if (scrollPercent > 0.99) {
+      setVisibleLeft(true);
+      setVisibleRight(false);
+    } else {
+      setVisibleLeft(true);
+      setVisibleRight(true);
+    }
+  };
+
+  useEffect(() => {
+    hideArrow();
+  }, []);
+  const handleGoRight = () => {
+    slideRef.current.scrollBy({ left: 400, behavior: "smooth" });
+  };
+  const handleGoLeft = () => {
+    slideRef.current.scrollBy({ left: -400, behavior: "smooth" });
+  };
   return (
     <>
       <StyledWrap>
@@ -19,9 +54,27 @@ const createHeroBanner = ({ data, title, desc, btn, img, imageFirst }) => {
           </StyleLeft>
           <StyledImg src={img} alt="" />
         </StyledContainer>
-        <StyledItemList>
-          {data.items.map((item, index) => createItem(data, index))}
-        </StyledItemList>
+        <StyledListDiv onMouseLeave={() => setHover(false)}>
+          <StyledItemList
+            ref={slideRef}
+            onMouseEnter={() => setHover(true)}
+            onScroll={hideArrow}
+          >
+            {(data?.items ?? []).map((item, index) => createItem(data, index))}
+          </StyledItemList>
+          {isHover && (
+            <div className="icon">
+              <FaRegArrowAltCircleLeft
+                onClick={handleGoLeft}
+                style={{ visibility: visibleLeft ? "visible" : "hidden" }}
+              />
+              <FaRegArrowAltCircleRight
+                onClick={handleGoRight}
+                style={{ visibility: visibleRight ? "visible" : "hidden" }}
+              />
+            </div>
+          )}
+        </StyledListDiv>
       </StyledWrap>
     </>
   );
@@ -44,6 +97,7 @@ const StyleLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 50%;
   gap: 2rem;
   h2 {
     font-size: 4.5rem;
@@ -98,4 +152,33 @@ const StyledItemList = styled.div`
   left: 3.5rem;
   right: 0;
   transform: translateY(60%);
+  overflow-x: auto;
+`;
+
+const StyledListDiv = styled.div`
+  position: relative;
+  margin: 1.5rem auto;
+  max-width: 90vw;
+  .icon {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    justify-content: space-between;
+
+    svg {
+      color: ${({ theme }) => theme.colors.cartBg};
+      font-size: 2.7rem;
+      cursor: pointer;
+      background-color: #fff;
+      border-radius: 50%;
+      scale: 1.2;
+      border: 1px solid ${({ theme }) => theme.colors.cartBg};
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 `;
