@@ -1,13 +1,16 @@
-import React from 'react'
-import createProductDetail from './createProductDetail'
-import ProductDetailData from './ProductDetailData'
+import React from "react";
+import CreateProductDetail from "./createProductDetail";
+import ProductDetailData from "./ProductDetailData";
 
 const ProductDetailSlide = () => {
   return (
     <>
-      {createProductDetail(ProductDetailData, "Recommended for you")}
+      <CreateProductDetail
+        itemData={ProductDetailData}
+        title="Recommended for you"
+      />
     </>
-  )
-}
+  );
+};
 
-export default ProductDetailSlide
+export default ProductDetailSlide;

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { FaRegHeart } from "react-icons/fa";
 import { BsBasketFill } from "react-icons/bs";
-import React, { useEffect, useState } from "react";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  FaRegArrowAltCircleRight,
+  FaRegArrowAltCircleLeft,
+} from "react-icons/fa";
 
 // component tạo danh sách sản phẩm
-const createProductDetail = (itemData, title) => {
+function CreateProductDetail({ itemData, title }) {
   const [isHover, setHover] = useState(false);
   const [visibleLeft, setVisibleLeft] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -39,27 +40,32 @@ const createProductDetail = (itemData, title) => {
     slideRef.current.scrollBy({ left: -400, behavior: "smooth" });
   };
   return (
-    <StyledContainer>
+    <StyledContainer onMouseLeave={() => setHover(false)}>
       <h3>{title}</h3>
-      <div className="itemContainer">
-        {itemData.items.map((item, idx) => (
+      <div
+        className="itemContainer"
+        onMouseEnter={() => setHover(true)}
+        ref={slideRef}
+        onScroll={hideArrow}
+      >
+        {(itemData?.items ?? []).map((item, idx) => (
           <StyledItem key={idx}>
             <StyledUpper>
-              <img src={itemData.img[idx]} alt={item} />
+              <img src={itemData?.img?.[idx] ?? ""} alt={item} />
               <p>Offer</p>
               <FaRegHeart />
             </StyledUpper>
             <StyledLower>
               <h5>{item}</h5>
               <ul>
-                {itemData.details[idx].map((detail, dIdx) => (
+                {(itemData?.details?.[idx] ?? []).map((detail, dIdx) => (
                   <li key={dIdx}>{detail}</li>
                 ))}
               </ul>
               <div className="price-container">
                 <StyledPrice>
-                  <p className="price">{itemData.price[idx]}</p>
-                  <p className="oldPrice">{itemData.oldPrice[idx]}</p>
+                  <p className="price">{itemData?.price?.[idx] ?? ""}</p>
+                  <p className="oldPrice">{itemData?.oldPrice?.[idx] ?? ""}</p>
                 </StyledPrice>
                 <BsBasketFill />
               </div>
@@ -81,9 +87,9 @@ const createProductDetail = (itemData, title) => {
       )}
     </StyledContainer>
   );
-};
+}
 
-export default createProductDetail;
+export default CreateProductDetail;
 
 const StyledContainer = styled.div`
   display: flex;
@@ -91,27 +97,55 @@ const StyledContainer = styled.div`
   margin: 1.5rem auto;
   gap: 1.5rem;
   max-width: 90vw;
+  position: relative;
+
   .itemContainer {
     display: flex;
     gap: 1.2rem;
+    overflow-x: auto; /* chỉ scroll ngang */
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+  }
+  .icon {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    svg {
+      color: ${({ theme }) => theme.colors.cartBg};
+      font-size: 2.7rem;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 `;
-// styled-components
+
 const StyledItem = styled.div`
-  display: inline-flex;
-  padding: 1rem;
+  flex: 0 0 28rem; /* width cố định, không co lại */
+  height: 42rem; /* height cố định */
+  display: flex;
   flex-direction: column;
-  background-color: white;
+  justify-content: space-between;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.5rem;
   cursor: pointer;
+
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
   h5 {
     font-size: 1.35rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* số dòng tối đa */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -119,26 +153,28 @@ const StyledItem = styled.div`
 `;
 
 const StyledUpper = styled.div`
-  display: inline-block;
   position: relative;
+
   p {
     font-size: 1rem;
     font-weight: 900;
     padding: 0.5rem;
     background-color: yellow;
-    display: inline-block;
     position: absolute;
-    top: 0rem;
-    left: 0rem;
+    top: 0;
+    left: 0;
   }
+
   svg {
     position: absolute;
     top: 1rem;
-    right: 0;
+    right: 1rem;
   }
+
   img {
     height: 18rem;
-    width: auto;
+    width: 100%;
+    object-fit: contain;
     background-color: ${({ theme }) => theme.colors.backgroundAlt};
     &:hover {
       background-color: #fff;
@@ -147,52 +183,66 @@ const StyledUpper = styled.div`
   }
 `;
 
-const StyledPrice = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  .price {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.primary};
-  }
-  .oldPrice {
-    font-size: 1.2rem;
-    text-decoration: line-through;
-  }
-`;
-
 const StyledLower = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 1rem;
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  li {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .price-container {
+    margin-top: auto; /* đẩy xuống đáy */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   svg {
     color: white;
     background-color: ${({ theme }) => theme.colors.cartBg};
     padding: 0.6rem;
     border-radius: 50%;
-    font-size: 2.5rem;
-    scale: 1.1;
-    fill-opacity: 0.8;
+    font-size: 2.2rem;
+    scale: 1.3;
     cursor: pointer;
     &:hover {
       opacity: 1;
     }
   }
-  .price-container {
+`;
+
+const StyledPrice = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
+  gap: 0.5rem;
+
+  .price {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.primary};
+    white-space: nowrap;
+    line-height: 1;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
   }
-  ul {
-    list-style-type: disc;
-    list-style-position: inside;
-  }
-  li {
-    font-size: 1.2rem;
-    margin-bottom: 0.6rem;
+
+  .oldPrice {
+    font-size: 1.4rem;
+    text-decoration: line-through;
+    color: gray;
+    white-space: nowrap;
+    line-height: 1;
+    display: flex;
+    align-items: center;
   }
 `;

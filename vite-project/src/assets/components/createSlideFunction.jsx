@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { useRef } from "react";
-const createSlideFunction = (itemData, title) => {
+import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
+
+function CreateSlideFunction({ itemData, title }) {
   const [isHover, setHover] = useState(false);
   const [visibleLeft, setVisibleLeft] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -28,12 +27,14 @@ const createSlideFunction = (itemData, title) => {
   useEffect(() => {
     hideArrow();
   }, []);
+
   const handleGoRight = () => {
     slideRef.current.scrollBy({ left: 400, behavior: "smooth" });
   };
   const handleGoLeft = () => {
     slideRef.current.scrollBy({ left: -400, behavior: "smooth" });
   };
+
   return (
     <StyledWrap onMouseLeave={() => setHover(false)}>
       <h3>{title}</h3>
@@ -42,11 +43,11 @@ const createSlideFunction = (itemData, title) => {
         ref={slideRef}
         onScroll={hideArrow}
       >
-        {itemData.img.map((item, index) => (
+        {(itemData && Array.isArray(itemData.img) ? itemData.img : []).map((item, index) => (
           <a key={index}>
             <div>
-              <img src={item} alt={itemData.items[index]} />
-              <p>{itemData.items[index]}</p>
+              <img src={item} alt={itemData?.items?.[index] ?? ""} />
+              <p>{itemData?.items?.[index] ?? ""}</p>
             </div>
           </a>
         ))}
@@ -66,9 +67,9 @@ const createSlideFunction = (itemData, title) => {
       )}
     </StyledWrap>
   );
-};
+}
 
-export default createSlideFunction;
+export default CreateSlideFunction;
 
 const StyledSlide = styled.div`
   display: flex;
