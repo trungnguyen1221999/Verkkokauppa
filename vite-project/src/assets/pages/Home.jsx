@@ -15,6 +15,7 @@ import NewProductsHeroBanner from "../components/NewProductsHeroBanner";
 import PopularBlogSlide from "../components/PopularBlogSlide";
 import MightLike from "../components/MightLike";
 import TwoSection3 from "../components/TwoSection3";
+import UsedProduct from "../components/UsedProduct";
 
 const Home = () => {
   return (
@@ -39,6 +40,7 @@ const Home = () => {
       <PopularBlogSlide />
       <MightLike />
       <TwoSection3 />
+      <UsedProduct />
     </>
   );
 };
