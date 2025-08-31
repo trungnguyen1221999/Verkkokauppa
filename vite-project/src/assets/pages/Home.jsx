@@ -18,6 +18,7 @@ import TwoSection3 from "../components/TwoSection3";
 import UsedProduct from "../components/UsedProduct";
 import DeliveryHeroBAnner from "../components/DeliveryHeroBAnner";
 import PopularServicesSlide from "../components/PopularServicesSlide";
+import YoBanner from "../components/YoBanner";
 
 const Home = () => {
   return (
@@ -45,6 +46,7 @@ const Home = () => {
       <UsedProduct />
       <DeliveryHeroBAnner />
       <PopularServicesSlide />
+      <YoBanner />
     </>
   );
 };
