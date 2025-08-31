@@ -31,7 +31,6 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   width: 100%;
   margin: 1.5rem auto;
-
   max-width: 90vw;
 `;
 

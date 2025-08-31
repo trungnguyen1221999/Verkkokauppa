@@ -20,6 +20,7 @@ import DeliveryHeroBAnner from "../components/DeliveryHeroBAnner";
 import PopularServicesSlide from "../components/PopularServicesSlide";
 import YoBanner from "../components/YoBanner";
 import MightLikeSlide2 from "../components/MightLikeSlide2";
+import TwoSection4 from "../components/TwoSection4";
 
 const Home = () => {
   return (
@@ -49,6 +50,7 @@ const Home = () => {
       <PopularServicesSlide />
       <YoBanner />
       <MightLikeSlide2 />
+      <TwoSection4 />
     </>
   );
 };
