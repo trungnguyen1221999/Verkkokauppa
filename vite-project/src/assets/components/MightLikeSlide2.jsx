@@ -19,5 +19,5 @@ const MightLikeSlide2 = () => {
 export default MightLikeSlide2;
 
 const StyledContainer = styled.div`
-  margin-top: 11rem;
+  margin-top: 12rem;
 `;

@@ -44,10 +44,12 @@ function CreateSlideFunction({ itemData, title, btn }) {
     <StyledWrap onMouseLeave={() => setHover(false)}>
       <div className="header">
         <h3>{title}</h3>
-        <div className="btn">
-          <a href="">{btn}</a>
-          <FaArrowRightLong />
-        </div>
+        {btn && (
+          <div className="btn">
+            <a href="">{btn}</a>
+            <FaArrowRightLong />
+          </div>
+        )}
       </div>
       <StyledSlide
         onMouseEnter={() => setHover(true)}
