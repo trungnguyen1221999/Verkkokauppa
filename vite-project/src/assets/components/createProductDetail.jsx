@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 // component tạo danh sách sản phẩm
-function CreateProductDetail({ itemData, title }) {
+function CreateProductDetail({ itemData, title, badge, badgeColor }) {
   const [isHover, setHover] = useState(false);
   const [visibleLeft, setVisibleLeft] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -50,9 +50,9 @@ function CreateProductDetail({ itemData, title }) {
       >
         {(itemData?.items ?? []).map((item, idx) => (
           <StyledItem key={idx}>
-            <StyledUpper>
+            <StyledUpper badgeColor={badgeColor}>
               <img src={itemData?.img?.[idx] ?? ""} alt={item} />
-              <p>Offer</p>
+              <p>{badge}</p>
               <FaRegHeart />
             </StyledUpper>
             <StyledLower>
@@ -163,7 +163,7 @@ const StyledUpper = styled.div`
     font-size: 1rem;
     font-weight: 900;
     padding: 0.5rem;
-    background-color: yellow;
+    background-color: ${({ badgeColor }) => badgeColor};
     position: absolute;
     top: 0;
     left: 0;

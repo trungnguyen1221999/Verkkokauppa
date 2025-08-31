@@ -10,6 +10,7 @@ import TVBanner from "../components/TVBanner";
 import BlogSaleOffSlide from "../components/funtion/BlogSaleOffSlide";
 import TwoSection from "../components/TwoSection";
 import Banner3 from "../components/Banner3";
+import VerkkisBestSelling from "../components/VerkkisBestSelling";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
       <BlogSaleOffSlide />
       <TwoSection />
       <Banner3 />
+      <VerkkisBestSelling />
     </>
   );
 };

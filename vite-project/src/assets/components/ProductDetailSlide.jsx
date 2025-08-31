@@ -8,6 +8,8 @@ const ProductDetailSlide = () => {
       <CreateProductDetail
         itemData={ProductDetailData}
         title="Recommended for you"
+        badge="Offer"
+        badgeColor="yellow"
       />
     </>
   );
