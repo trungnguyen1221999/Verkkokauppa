@@ -24,4 +24,10 @@ const Container = styled.div`
   .slide {
     gap: 0.2rem;
   }
+  img {
+    background-color: #fff;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
 `;
