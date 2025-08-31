@@ -48,12 +48,14 @@ function CreateSlideFunction({ itemData, title }) {
       >
         {(itemData && Array.isArray(itemData.img) ? itemData.img : []).map(
           (item, index) => (
-            <a key={index}>
-              <div>
-                <img src={item} alt={itemData?.items?.[index] ?? ""} />
-                <p>{itemData?.items?.[index] ?? ""}</p>
-              </div>
-            </a>
+            <div className="item">
+              <a key={index}>
+                <div>
+                  <img src={item} alt={itemData?.items?.[index] ?? ""} />
+                  <p>{itemData?.items?.[index] ?? ""}</p>
+                </div>
+              </a>
+            </div>
           )
         )}
       </StyledSlide>
@@ -127,6 +129,17 @@ const StyledWrap = styled.div`
       &:hover {
         opacity: 0.8;
       }
+    }
+  }
+  .item {
+    p {
+      flex-wrap: wrap;
+      max-width: 12rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   max-width: 90vw;
