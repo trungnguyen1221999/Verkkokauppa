@@ -353,7 +353,7 @@ const StylePostCodeSaveNoti = styled.div`
   width: 20rem;
   border: 0.2px solid #ccc;
   background-color: #add8e6;
-  scale: 1.2;
+  scale: 1.15;
   div {
     background-color: #06a55d;
     width: 3rem;
