@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa6";
+
 import {
   FaRegArrowAltCircleRight,
   FaRegArrowAltCircleLeft,
 } from "react-icons/fa";
 
-const createBlogSlide = ({ data, heading, btn }) => {
+const createBlogSlide = ({ data, heading, btn, viewAll }) => {
   const [isHover, setHover] = useState(false);
   const [visibleLeft, setVisibleLeft] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -59,6 +61,10 @@ const createBlogSlide = ({ data, heading, btn }) => {
           </StyledItem>
         ))}
       </StyledList>
+      <div className="view-all">
+        <a href="">{viewAll}</a>
+        <FaArrowRightLong />
+      </div>
       {isHover && (
         <div className="icon">
           <FaRegArrowAltCircleLeft
@@ -108,6 +114,24 @@ const StyledContainer = styled.div`
       &:hover {
         opacity: 0.8;
       }
+    }
+  }
+  .view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    width: fit-content;
+    padding: 1.2rem 1.5rem;
+    border-radius: 2rem;
+    background-color: ${({ theme }) => theme.colors.cartBg};
+    a {
+      font-size: 1.2rem;
+      color: white;
+      font-weight: 600;
+    }
+    svg {
+      color: white;
     }
   }
 `;
