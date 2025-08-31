@@ -16,6 +16,8 @@ import PopularBlogSlide from "../components/PopularBlogSlide";
 import MightLike from "../components/MightLike";
 import TwoSection3 from "../components/TwoSection3";
 import UsedProduct from "../components/UsedProduct";
+import DeliveryHeroBAnner from "../components/DeliveryHeroBAnner";
+import PopularServicesSlide from "../components/PopularServicesSlide";
 
 const Home = () => {
   return (
@@ -41,6 +43,8 @@ const Home = () => {
       <MightLike />
       <TwoSection3 />
       <UsedProduct />
+      <DeliveryHeroBAnner />
+      <PopularServicesSlide />
     </>
   );
 };

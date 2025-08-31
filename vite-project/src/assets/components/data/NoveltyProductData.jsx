@@ -62,7 +62,6 @@ const NoveltyProductData = {
     ],
 
     [
-      "No rating",
       "150 MB/s read speed, UHS-I speed class, U1, V10, A1",
       "Capacity 128 GB",
       "Optimized for use on Android devices",
@@ -70,14 +69,14 @@ const NoveltyProductData = {
     ],
 
     [
-      "No rating",
+      ,
       "Includes additional content",
       "The return of a classic",
       "Sneak, fight and survive",
     ],
 
     [
-      "No rating",
+      ,
       "3 TCG booster packs",
       "1 foil promo card",
       "1 technical sticker sheet",
@@ -95,7 +94,7 @@ const NoveltyProductData = {
     ],
 
     [
-      "No rating",
+      ,
       "3 TCG booster packs",
       "1 foil promo card",
       "1 technical sticker sheet",
@@ -113,14 +112,12 @@ const NoveltyProductData = {
     ],
 
     [
-      "No rating",
       "Original accessory",
       "Compatible with OnePlus Watch 3, Watch 2, Watch 2R",
       "USB-C",
     ],
 
     [
-      "No rating",
       "Energy class A",
       "Filling quantity 8 kg",
       "Spin 1400 rpm",
@@ -129,7 +126,6 @@ const NoveltyProductData = {
     ],
 
     [
-      "No rating",
       "New, August 2025",
       "390 parts",
       "Age recommendation: 9+",
