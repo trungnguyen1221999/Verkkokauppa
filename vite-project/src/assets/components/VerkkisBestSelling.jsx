@@ -10,7 +10,7 @@ const VerkkisBestSelling = () => {
         itemData={NoveltyProductData}
         title="Verkkis' best-selling new products"
         badge="Novelty"
-        badgeColor="green"
+        badgeColor="#02da86"
       />
     </StyledDiv>
   );

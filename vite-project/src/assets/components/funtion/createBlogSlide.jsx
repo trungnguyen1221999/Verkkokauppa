@@ -61,10 +61,12 @@ const createBlogSlide = ({ data, heading, btn, viewAll }) => {
           </StyledItem>
         ))}
       </StyledList>
-      <div className="view-all">
-        <a href="">{viewAll}</a>
-        <FaArrowRightLong />
-      </div>
+      {viewAll && (
+        <div className="view-all">
+          <a href="">{viewAll}</a>
+          <FaArrowRightLong />
+        </div>
+      )}
       {isHover && (
         <div className="icon">
           <FaRegArrowAltCircleLeft
@@ -88,7 +90,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   margin: 1.5rem auto;
-  margin-top: 13rem;
+  margin-top: 2rem;
   max-width: 90vw;
   h3 {
     font-size: 2rem;
