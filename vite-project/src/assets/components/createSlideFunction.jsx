@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
+import { FaArrowRightLong } from "react-icons/fa6";
+
 import {
   FaRegArrowAltCircleRight,
   FaRegArrowAltCircleLeft,
 } from "react-icons/fa";
 
-function CreateSlideFunction({ itemData, title }) {
+function CreateSlideFunction({ itemData, title, btn }) {
   const [isHover, setHover] = useState(false);
   const [visibleLeft, setVisibleLeft] = useState(false);
   const [visibleRight, setVisibleRight] = useState(false);
@@ -40,7 +42,13 @@ function CreateSlideFunction({ itemData, title }) {
 
   return (
     <StyledWrap onMouseLeave={() => setHover(false)}>
-      <h3>{title}</h3>
+      <div className="header">
+        <h3>{title}</h3>
+        <div className="btn">
+          <a href="">{btn}</a>
+          <FaArrowRightLong />
+        </div>
+      </div>
       <StyledSlide
         onMouseEnter={() => setHover(true)}
         ref={slideRef}
@@ -104,6 +112,34 @@ const StyledSlide = styled.div`
 `;
 
 const StyledWrap = styled.div`
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: fit-content;
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      background-color: black;
+      gap: 1rem;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
+      a {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: white;
+      }
+      svg {
+        font-size: 1.2rem;
+        color: white;
+      }
+    }
+  }
   h3 {
     font-size: 1.6rem;
     margin-bottom: 2rem;
