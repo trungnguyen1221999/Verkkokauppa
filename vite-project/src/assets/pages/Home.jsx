@@ -12,6 +12,7 @@ import TwoSection from "../components/TwoSection";
 import Banner3 from "../components/Banner3";
 import VerkkisBestSelling from "../components/VerkkisBestSelling";
 import NewProductsHeroBanner from "../components/NewProductsHeroBanner";
+import PopularBlogSlide from "../components/PopularBlogSlide";
 
 const Home = () => {
   return (
@@ -33,6 +34,7 @@ const Home = () => {
       <Banner3 />
       <VerkkisBestSelling />
       <NewProductsHeroBanner />
+      <PopularBlogSlide />
     </>
   );
 };
