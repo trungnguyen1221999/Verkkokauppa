@@ -14,6 +14,7 @@ import VerkkisBestSelling from "../components/VerkkisBestSelling";
 import NewProductsHeroBanner from "../components/NewProductsHeroBanner";
 import PopularBlogSlide from "../components/PopularBlogSlide";
 import MightLike from "../components/MightLike";
+import TwoSection3 from "../components/TwoSection3";
 
 const Home = () => {
   return (
@@ -37,6 +38,7 @@ const Home = () => {
       <NewProductsHeroBanner />
       <PopularBlogSlide />
       <MightLike />
+      <TwoSection3 />
     </>
   );
 };
