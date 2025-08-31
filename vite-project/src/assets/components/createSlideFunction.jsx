@@ -52,6 +52,7 @@ function CreateSlideFunction({ itemData, title, btn }) {
         )}
       </div>
       <StyledSlide
+        className="slide"
         onMouseEnter={() => setHover(true)}
         ref={slideRef}
         onScroll={hideArrow}

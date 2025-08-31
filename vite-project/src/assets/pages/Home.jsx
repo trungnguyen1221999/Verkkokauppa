@@ -22,6 +22,7 @@ import YoBanner from "../components/YoBanner";
 import MightLikeSlide2 from "../components/MightLikeSlide2";
 import TwoSection4 from "../components/TwoSection4";
 import OnlyVerkko from "../components/OnlyVerkko";
+import BrandSlide from "../components/BrandSlide";
 
 const Home = () => {
   return (
@@ -53,6 +54,7 @@ const Home = () => {
       <MightLikeSlide2 />
       <TwoSection4 />
       <OnlyVerkko />
+      <BrandSlide />
     </>
   );
 };
