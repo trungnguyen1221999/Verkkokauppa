@@ -24,6 +24,7 @@ import TwoSection4 from "../components/TwoSection4";
 import OnlyVerkko from "../components/OnlyVerkko";
 import BrandSlide from "../components/BrandSlide";
 import LatestBlogsSlide from "../components/LatestBlogsSlide";
+import Subscribe from "../components/Subscribe";
 
 const Home = () => {
   return (
@@ -57,6 +58,7 @@ const Home = () => {
       <OnlyVerkko />
       <BrandSlide />
       <LatestBlogsSlide />
+      <Subscribe />
     </>
   );
 };
