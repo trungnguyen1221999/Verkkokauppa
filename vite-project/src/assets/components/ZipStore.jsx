@@ -340,6 +340,7 @@ const StylePostCodeSaveNoti = styled.div`
   position: fixed;
   transition: 0.3s;
   bottom: 7rem;
+  z-index: 99999;
   left: 50%;
   transform: translateX(-50%)
     translateY(${(props) => (props.show ? "0" : "10px")});
@@ -351,9 +352,10 @@ const StylePostCodeSaveNoti = styled.div`
   border-radius: 1rem;
   width: 20rem;
   border: 0.2px solid #ccc;
-  background-color: #add8e68e;
+  background-color: #add8e6;
+  scale: 1.2;
   div {
-    background-color: #06a55deb;
+    background-color: #06a55d;
     width: 3rem;
     display: flex;
     justify-content: center;
@@ -384,7 +386,7 @@ const CloseBtn = styled.p`
   right: 0.2rem;
   cursor: pointer;
   font-size: 1.3rem !important;
-  color: #06a55deb;
+  color: #06a55d;
 `;
 
 const StyledLocationSelection = styled.div`
@@ -489,7 +491,7 @@ const Label = styled.label`
   }
   &:hover,
   &:active {
-    background-color: #add8e68e;
+    background-color: #add8e6;
   }
 `;
 
