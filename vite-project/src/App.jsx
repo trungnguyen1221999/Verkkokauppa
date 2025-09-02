@@ -2,7 +2,7 @@ import Header from "./assets/components/Header";
 import GlobalStyle from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./Theme";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./assets/pages/Home";
 import Gaming from "./assets/pages/catalog/Gaming";
 import PictureSound from "./assets/pages/catalog/PictureSound";
@@ -25,6 +25,8 @@ function App() {
       <GlobalStyle />
       <Header />
       <Routes>
+        <Route path="/" element={<Navigate to="/etusivu" replace />} />
+
         <Route path="/etusivu" element={<Home />} />
         <Route path="/catalog/tietotekniikka" element={<InformationTech />} />
         <Route path="/catalog/pelaaminen" element={<Gaming />} />
