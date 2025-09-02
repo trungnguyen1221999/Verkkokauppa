@@ -1,0 +1,45 @@
+const FooterNavData = {
+  title: ["Instructions", "Services", "Verkkokauppa.com", "Social media"],
+  subtitle: [
+    [
+      "Tips and buying guides",
+      "Returns",
+      "Warranty and service",
+      "Product recalls",
+      "Payment methods",
+      "Modes",
+      "Recycling",
+      "Terms",
+      "Privacy policy",
+      "Artificial Intelligence Statement",
+      "Cookie settings",
+    ],
+    [
+      "Corporate sales",
+      "Wholesale",
+      "Installation Services",
+      "Maintenance",
+      "Interfaces",
+      "Financing",
+      "Fast delivery methods",
+      "Pick-up locker",
+    ],
+    [
+      "Business listings",
+      "Contact details",
+      "Work at Verkkis?",
+      "Accountability",
+      "Accessibility statement",
+      "Media and press releases",
+      "Charity and sponsorship",
+      "Sijoittajat - Investors",
+      "Product Reviews",
+      "Subscribe to our newsletter",
+      "Black Friday",
+      "Verk.com",
+    ],
+    ["Facebook", "Instagram", "LinkedIn", "Youtube"],
+  ],
+};
+
+export default FooterNavData;

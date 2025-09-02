@@ -18,6 +18,7 @@ import Oppaat from "./assets/pages/Oppaat";
 import Ajankohtaista from "./assets/pages/Ajankohtaista";
 import InformationTech from "./assets/pages/catalog/InformationTech";
 import Palvelut from "./assets/pages/Palvelut";
+import Footer from "./assets/components/Footer";
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -47,6 +48,7 @@ function App() {
         <Route path="/palvelut" element={<Palvelut />} />
         <Route path="/ajankohtaista" element={<Ajankohtaista />} />
       </Routes>
+      <Footer />
     </ThemeProvider>
   );
 }
