@@ -35,4 +35,10 @@ const StyledAnnoucement = styled.div`
   svg {
     font-size: 1.7rem;
   }
+  @media (max-width: 768px) {
+    a {
+      text-align: center;
+    }
+    padding: 1rem 2rem;
+  }
 `;

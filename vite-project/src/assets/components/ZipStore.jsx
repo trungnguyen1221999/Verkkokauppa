@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { MdMyLocation } from "react-icons/md";
 import { PiCheckCircleBold } from "react-icons/pi";
 
-const ZipStore = () => {
+const ZipStore = ({ className }) => {
   const [openZip, setOpenZip] = useState(false);
   const [inputValue, setInputValue] = useState("00220");
   const [postCodeNoti, setPostCodeNoti] = useState("");
@@ -65,7 +65,7 @@ const ZipStore = () => {
   };
 
   return (
-    <div>
+    <div className={className}>
       <StyledZipStore>
         <button onClick={() => setOpenZip(true)}>00220</button>
         <hr />
@@ -228,6 +228,9 @@ const StyledZipStore = styled.div`
     width: 0.3px;
     height: 2.5rem;
     opacity: 0.6;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;
 

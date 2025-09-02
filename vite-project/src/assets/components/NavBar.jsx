@@ -56,6 +56,9 @@ const StyledNavBar = styled.nav`
   justify-content: space-between;
   padding: 1rem 0;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
   span {
     display: flex;
     justify-content: space-between;

@@ -13,4 +13,7 @@ const StyledContainer = styled.div`
   align-items: center;
   margin: 1.5rem auto;
   max-width: 90vw;
+  @media (max-width: 768px) {
+    margin: 0.8rem auto;
+  }
 `;

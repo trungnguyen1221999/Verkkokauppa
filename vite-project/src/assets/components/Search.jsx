@@ -85,6 +85,9 @@ const SearchContainer = styled.div`
   display: inline-block;
   max-height: 50vw;
   padding: 0 20rem;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const SearchWrapper = styled.div`
@@ -96,6 +99,7 @@ const SearchWrapper = styled.div`
   z-index: 1000;
   overflow: visible;
   border-radius: 2.5rem;
+
   /* chỉ highlight khi input focus */
   ${({ $isFocused }) =>
     $isFocused &&
@@ -103,7 +107,14 @@ const SearchWrapper = styled.div`
     border-color: #1e90ff;
     background-color: white;
     border-radius: 2.5rem 2.5rem 0 0;
-  `};
+  `}
+  @media (max-width: 768px) {
+    width: 18rem;
+    padding: 0.25rem 0;
+    input {
+      font-size: 1.4rem !important;
+    }
+  }
 `;
 
 const StyleSearch = styled.div`
@@ -132,6 +143,9 @@ const StyledSearchIcon = styled(IoIosSearch)`
   top: 1.1rem;
   right: 1.5rem;
   color: #636161;
+  @media (max-width: 768px) {
+    font-size: 2rem !important;
+  }
 `;
 
 const StyledDropDown = styled.div`
@@ -146,6 +160,11 @@ const StyledDropDown = styled.div`
   border-radius: 0 0 2.5rem 2.5rem;
   overflow-y: auto;
   max-height: 22rem;
+  @media (max-width: 768px) {
+    svg {
+      font-size: 2 !important;
+    }
+  }
 
   .suosittua {
     font-size: 0.9rem;

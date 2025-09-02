@@ -115,18 +115,28 @@ const StyledLogin = styled.div`
   cursor: pointer;
   padding: 1rem 2rem;
   border-radius: 5rem;
+  @media (max-width: 768px) {
+    padding: 0.5rem 0;
+  }
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundAlt};
   }
   p {
     font-size: 1.25rem;
     font-weight: 600;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   svg {
     margin-right: 0.5rem;
     scale: 1.3;
     opacity: 0.8;
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+      margin-right: 0rem;
+    }
   }
 `;
 

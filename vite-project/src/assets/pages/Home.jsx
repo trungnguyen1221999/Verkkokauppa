@@ -25,13 +25,14 @@ import OnlyVerkko from "../components/OnlyVerkko";
 import BrandSlide from "../components/BrandSlide";
 import LatestBlogsSlide from "../components/LatestBlogsSlide";
 import Subscribe from "../components/Subscribe";
+import styled from "styled-components";
 
 const Home = () => {
   return (
     <>
-      <Container>
+      <StyledContainer>
         <Annoucement />
-      </Container>
+      </StyledContainer>
       <Container>
         <SlideTrending />
       </Container>
@@ -64,3 +65,15 @@ const Home = () => {
 };
 
 export default Home;
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem auto;
+  max-width: 90vw;
+  @media (max-width: 768px) {
+    max-width: 100vw;
+    margin: 1.5rem 0;
+  }
+`;

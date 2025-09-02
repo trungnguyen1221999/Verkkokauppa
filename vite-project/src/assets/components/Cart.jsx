@@ -19,4 +19,9 @@ const StyledCart = styled(BsBasketFill)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundAlt};
   }
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    padding: 0;
+    border-radius: 0;
+  }
 `;
