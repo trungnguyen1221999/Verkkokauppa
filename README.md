@@ -28,4 +28,14 @@ Currently, only the **homepage** has been implemented, and I will continue to ex
 
 Example:
 ```jsx
-<ProductList data={products} />
+const LatestBlogsSlide = () => {
+  return (
+    <>
+      {createBlogSlide({
+        data: LatestBlogsData,
+        heading: "Latest articles",
+        btn: "Read more",
+      })}
+    </>
+  );
+};
