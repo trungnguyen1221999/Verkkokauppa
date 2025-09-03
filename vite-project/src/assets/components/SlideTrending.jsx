@@ -85,8 +85,15 @@ const StyledSlide = styled.div`
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   }
+  @media (max-width: 768px) {
+    width: 90vw;
+    img {
+      height: 8rem;
+      padding: 1rem;
+    }
+  }
   overflow: auto;
-  max-width: calc(100vw - 12rem);
+  max-width: 90vw;
   p {
     font-size: 1.3rem;
     font-weight: 600;
@@ -127,4 +134,7 @@ const StyledWrap = styled.div`
   }
   max-width: 90vw;
   margin-bottom: 1.5rem;
+  @media (max-width: 768px) {
+    width: 90vw;
+  }
 `;

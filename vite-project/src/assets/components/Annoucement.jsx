@@ -41,4 +41,7 @@ const StyledAnnoucement = styled.div`
     }
     padding: 1rem 2rem;
   }
+  @media (max-width: 400px) {
+    margin: 0 !important;
+  }
 `;

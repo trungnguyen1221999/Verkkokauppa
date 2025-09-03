@@ -24,4 +24,7 @@ const StyledCart = styled(BsBasketFill)`
     padding: 0;
     border-radius: 0;
   }
+  @media (max-width: 400px) {
+    font-size: 2rem;
+  }
 `;

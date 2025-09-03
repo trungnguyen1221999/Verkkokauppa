@@ -60,6 +60,10 @@ const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
   cursor: pointer;
   font-size: 2.5rem;
   margin-right: 1rem;
+  @media (max-width: 400px) {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
 `;
 
 const StyledContainerMobile = styled.div`

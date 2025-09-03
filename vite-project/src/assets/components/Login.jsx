@@ -137,6 +137,9 @@ const StyledLogin = styled.div`
       font-size: 2.2rem;
       margin-right: 0rem;
     }
+    @media (max-width: 400px) {
+      font-size: 2rem;
+    }
   }
 `;
 

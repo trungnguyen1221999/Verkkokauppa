@@ -111,8 +111,24 @@ const SearchWrapper = styled.div`
   @media (max-width: 768px) {
     width: 18rem;
     padding: 0.25rem 0;
+    ${({ $isFocused }) =>
+      $isFocused &&
+      `
+    width: 90vw!important;
+    position: fixed;
+    top: 0.5rem;
+    left: 4.5vw;
+    right: 5vw;
+    
+    `}
     input {
       font-size: 1.4rem !important;
+    }
+  }
+  @media (max-width: 400px) {
+    width: 15rem;
+    input {
+      font-size: 1.2rem !important;
     }
   }
 `;
@@ -146,6 +162,9 @@ const StyledSearchIcon = styled(IoIosSearch)`
   @media (max-width: 768px) {
     font-size: 2rem !important;
   }
+  @media (max-width: 400px) {
+    font-size: 1.2rem !important;
+  }
 `;
 
 const StyledDropDown = styled.div`
@@ -163,6 +182,12 @@ const StyledDropDown = styled.div`
   @media (max-width: 768px) {
     svg {
       font-size: 2 !important;
+    }
+    p {
+      font-size: 1rem;
+    }
+    h5 {
+      font-size: 1.3rem;
     }
   }
 

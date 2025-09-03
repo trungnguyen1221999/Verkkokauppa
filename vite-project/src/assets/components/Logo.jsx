@@ -27,7 +27,6 @@ const Logo = () => {
         </StyledLogo>
       </NavLink>
       <NavLink to="/etusivu">
-        {" "}
         <StyledMobie src="/images/logo.PNG" alt="" />
       </NavLink>
     </>
@@ -48,4 +47,7 @@ const StyledMobie = styled.img`
     display: none;
   }
   width: 4rem;
+  @media (max-width: 400px) {
+    width: 3rem;
+  }
 `;

@@ -30,9 +30,8 @@ import styled from "styled-components";
 const Home = () => {
   return (
     <>
-      <StyledContainer>
-        <Annoucement />
-      </StyledContainer>
+      <Annoucement />
+
       <Container>
         <SlideTrending />
       </Container>
