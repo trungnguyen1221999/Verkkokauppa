@@ -89,8 +89,18 @@ const StyledContainer = styled.div`
   margin: 1.5rem auto;
   max-width: 90vw;
   gap: 5rem;
-  flex-direction: ${({ imageFirst }) =>
-    imageFirst ? "row-reverse" : "row"}!important;
+  flex-direction: ${({ imageFirst }) => (imageFirst ? "row-reverse" : "row")};
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    img {
+      width: 90vw;
+      margin-bottom: 1.5rem;
+      border-radius: 2rem;
+      padding: 0;
+    }
+  }
 `;
 
 const StyleLeft = styled.div`
@@ -127,6 +137,13 @@ const StyleLeft = styled.div`
     }
   }
   margin-right: 5rem;
+  @media (max-width: 768px) {
+    width: 90vw;
+    h2 {
+      font-size: 2rem;
+    }
+    margin-right: 0;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -153,6 +170,14 @@ const StyledItemList = styled.div`
   right: 0;
   transform: translateY(60%);
   overflow-x: auto;
+  @media (max-width: 768px) {
+    position: relative;
+    transform: translateY(0%);
+    overflow-x: auto;
+    max-width: 90vw;
+    padding-bottom: 1.5rem;
+    left: 0;
+  }
 `;
 
 const StyledListDiv = styled.div`
