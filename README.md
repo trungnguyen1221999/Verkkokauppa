@@ -9,7 +9,7 @@ Currently, only the **homepage** has been implemented, and I will continue to ex
 ---
 
 ## 🌐 Live Demo
-👉 [View Demo on Netlify](https://deft-semolina-c33a0d.netlify.app/)
+👉 [View Demo on Netlify](https://extraordinary-cucurucho-3e6dd4.netlify.app/)
 
 ---
 
