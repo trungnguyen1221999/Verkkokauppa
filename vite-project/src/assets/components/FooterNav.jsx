@@ -46,6 +46,11 @@ const StyledContainer = styled.div`
     color: white;
     opacity: 0.85;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 1rem;
+  }
 `;
 
 const StyledColumn = styled.div`
@@ -73,5 +78,8 @@ const StyledColumn = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    max-width: 90vw;
   }
 `;

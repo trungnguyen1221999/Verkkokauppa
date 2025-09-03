@@ -45,6 +45,13 @@ const StyledColumnList = styled.div`
     text-decoration: underline;
   }
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 4rem;
+    width: 50vw;
+    margin: 0 auto;
+  }
 `;
 
 const StyledColumn = styled.div`
