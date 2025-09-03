@@ -96,7 +96,7 @@ const SearchWrapper = styled.div`
   border: 2px solid transparent;
   overflow: hidden;
   background-color: #cccccc3d;
-  z-index: 1000;
+  z-index: 10;
   overflow: visible;
   border-radius: 2.5rem;
 
@@ -129,6 +129,7 @@ const SearchWrapper = styled.div`
     width: 15rem;
     input {
       font-size: 1.2rem !important;
+      width: 100% !important;
     }
   }
 `;

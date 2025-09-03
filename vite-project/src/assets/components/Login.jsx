@@ -7,7 +7,7 @@ import { ImFacebook2 } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa6";
 import { FaAd } from "react-icons/fa";
-import { OVerLay } from "./ZipStore";
+
 const Login = () => {
   const [isFocus, setFocus] = useState(false);
   const [isOpenLogin, setOpenLogin] = useState(false);
@@ -150,7 +150,7 @@ const StyledLoginPopup = styled.div`
   height: 100%;
   background-color: white;
   padding: 1rem;
-  z-index: 999999 !important;
+  z-index: 9999;
   width: 43rem;
 
   transform: ${({ isOpenLogin }) =>
@@ -337,4 +337,16 @@ const LoginBy = styled.div`
       }
     }
   }
+`;
+const OVerLay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: ${({ theme }) => theme.colors.overlay};
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 `;

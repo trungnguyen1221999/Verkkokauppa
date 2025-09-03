@@ -315,7 +315,7 @@ export const OVerLay = styled.div`
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.overlay};
-  z-index: 998;
+  z-index: 9;
   display: flex;
   align-items: center;
   justify-content: center;
