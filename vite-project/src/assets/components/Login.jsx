@@ -73,7 +73,7 @@ const Login = () => {
             </LoginForm>
             <LoginBy>
               <h3>Use an identification service</h3>
-              <div>
+              <div className="div">
                 <div className="icon">
                   <ImFacebook2 />
                   <p>Facebook</p>
@@ -150,13 +150,16 @@ const StyledLoginPopup = styled.div`
   height: 100%;
   background-color: white;
   padding: 1rem;
-  z-index: 19999 !important;
+  z-index: 999999 !important;
   width: 43rem;
 
   transform: ${({ isOpenLogin }) =>
     isOpenLogin ? "translateX(0)" : "translateX(100%)"}!important;
   transition: transform 1s ease-in-out !important;
   will-change: transform;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
   hr {
     margin: 1.5rem 0;
     opacity: 0.85;
@@ -285,6 +288,7 @@ const LoginBy = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
   gap: 1rem;
+
   h3 {
     font-size: 1.25rem;
     margin-bottom: 2rem;
@@ -319,6 +323,18 @@ const LoginBy = styled.div`
     border-radius: 5rem;
     &:hover {
       background-color: transparent;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    .div {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      gap: 0.5rem;
+      p {
+        font-size: 1.2rem;
+      }
     }
   }
 `;
