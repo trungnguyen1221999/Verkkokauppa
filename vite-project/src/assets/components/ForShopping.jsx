@@ -35,6 +35,13 @@ const StyledContainer = styled.div`
   margin: 0 auto;
   margin-top: 22rem;
   max-width: 90vw;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 2rem;
+    max-width: 90vw;
+  }
 `;
 
 const StyledItem = styled.div`
@@ -92,6 +99,26 @@ const StyledItem = styled.div`
     svg {
       color: white;
       font-size: 1.25rem;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 0;
+    .item {
+      width: 90vw;
+      gap: 1rem;
+    }
+    align-items: center;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+    button {
+      font-size: 1.2rem;
     }
   }
 `;

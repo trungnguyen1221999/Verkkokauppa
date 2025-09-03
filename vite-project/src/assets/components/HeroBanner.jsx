@@ -8,7 +8,7 @@ import createItem from "./createItemFunction";
 const HeroBanner = () => {
   return (
     <StyledWrap>
-      <Container>
+      <StyledContainer>
         <StyleLeft>
           <h2>GET MACBOOK AIR M4 AT A SPECIAL PRICE</h2>
           <p>
@@ -24,7 +24,7 @@ const HeroBanner = () => {
           src="https://images.ctfassets.net/nggsuamsum0l/4f8K2FgRpJSU4M8lOnuXug/db09c45460d4005aecd6cf25dcdc1ed7/Apple_MacBook_Air_BTS_20250379_teaser_1920x1280_1_.jpg"
           alt=""
         />
-      </Container>
+      </StyledContainer>
       <StyledItemList>
         {HeroBannerData.items.map((item, index) =>
           createItem(HeroBannerData, index)
@@ -69,6 +69,19 @@ const StyleLeft = styled.div`
     }
   }
   margin-right: 5rem;
+  @media (max-width: 768px) {
+    gap: 1rem;
+    h2 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    width: 90vw;
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -81,6 +94,11 @@ const StyledWrap = styled.div`
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
   padding: 1rem 0;
   position: relative;
+  @media (max-width: 768px) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledItemList = styled.div`
@@ -94,4 +112,29 @@ const StyledItemList = styled.div`
   left: 0;
   right: 0;
   transform: translateY(80%);
+  @media (max-width: 768px) {
+    position: relative;
+    transform: translateY(0%);
+    overflow-x: auto;
+    max-width: 90vw;
+    padding-bottom: 1.5rem;
+  }
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem auto;
+  max-width: 90vw;
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    flex-direction: column-reverse;
+    img {
+      width: 100vw;
+      margin-bottom: 1.5rem;
+      border-radius: 0;
+      padding: 0;
+    }
+  }
 `;

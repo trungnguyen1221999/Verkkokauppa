@@ -143,6 +143,10 @@ const StyledList = styled.div`
   gap: 1.5rem;
   max-width: 90vw;
   overflow-x: auto;
+  @media (max-width: 768px) {
+    width: 90vw;
+    flex-direction: column;
+  }
 `;
 const StyledItem = styled.div`
   display: flex;
