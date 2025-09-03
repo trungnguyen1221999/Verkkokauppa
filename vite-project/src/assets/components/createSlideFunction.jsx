@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { FaArrowRightLong } from "react-icons/fa6";
-
 import {
   FaRegArrowAltCircleRight,
   FaRegArrowAltCircleLeft,
@@ -51,6 +50,7 @@ function CreateSlideFunction({ itemData, title, btn }) {
           </div>
         )}
       </div>
+
       <StyledSlide
         className="slide"
         onMouseEnter={() => setHover(true)}
@@ -59,8 +59,8 @@ function CreateSlideFunction({ itemData, title, btn }) {
       >
         {(itemData && Array.isArray(itemData.img) ? itemData.img : []).map(
           (item, index) => (
-            <div className="item">
-              <a key={index}>
+            <div className="item" key={index}>
+              <a>
                 <div>
                   <img src={item} alt={itemData?.items?.[index] ?? ""} />
                   <p>{itemData?.items?.[index] ?? ""}</p>
@@ -119,6 +119,12 @@ const StyledWrap = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1.5rem;
+    h3 {
+      padding: 1rem 1.5rem;
+      margin-bottom: 0;
+      font-size: 1.6rem;
+    }
     .btn {
       display: flex;
       justify-content: space-between;
@@ -142,12 +148,15 @@ const StyledWrap = styled.div`
         color: white;
       }
     }
+    @media (max-width: 768px) {
+      .btn {
+        padding: 0.8rem 1rem;
+      }
+    }
   }
-  h3 {
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
-  }
+
   position: relative;
+
   .icon {
     display: flex;
     position: absolute;
@@ -170,6 +179,7 @@ const StyledWrap = styled.div`
       }
     }
   }
+
   .item {
     p {
       flex-wrap: wrap;
@@ -181,7 +191,18 @@ const StyledWrap = styled.div`
       text-overflow: ellipsis;
     }
   }
+
+  @media (max-width: 768px) {
+    .item {
+      p {
+        font-size: 1.3rem;
+      }
+      img {
+        padding: 1rem;
+      }
+    }
+  }
+
   max-width: 90vw;
-  margin-bottom: 1.5rem;
   margin: 1.5rem auto;
 `;

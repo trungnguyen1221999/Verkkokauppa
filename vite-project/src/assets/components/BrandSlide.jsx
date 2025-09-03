@@ -30,4 +30,10 @@ const Container = styled.div`
       background-color: #f0f0f0;
     }
   }
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+    img {
+      height: 5rem;
+    }
+  }
 `;

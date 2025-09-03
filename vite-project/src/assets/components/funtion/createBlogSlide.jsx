@@ -136,6 +136,11 @@ const StyledContainer = styled.div`
       color: white;
     }
   }
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1.8rem;
+    }
+  }
 `;
 
 const StyledList = styled.div`
@@ -143,10 +148,6 @@ const StyledList = styled.div`
   gap: 1.5rem;
   max-width: 90vw;
   overflow-x: auto;
-  @media (max-width: 768px) {
-    width: 90vw;
-    flex-direction: column;
-  }
 `;
 const StyledItem = styled.div`
   display: flex;
@@ -174,6 +175,20 @@ const StyledItem = styled.div`
     gap: 1rem;
     &:hover {
       text-decoration: underline;
+    }
+  }
+  @media (max-width: 768px) {
+    img {
+      width: 90vw;
+    }
+    h4 {
+      font-size: 1.6rem;
+    }
+    p {
+      font-size: 1.3rem;
+    }
+    .btn {
+      font-size: 1.3rem;
     }
   }
 `;

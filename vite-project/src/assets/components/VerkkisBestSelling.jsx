@@ -20,4 +20,7 @@ export default VerkkisBestSelling;
 
 const StyledDiv = styled.div`
   margin-top: 11rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 `;

@@ -6,8 +6,10 @@ import styled from "styled-components";
 const Subscribe = () => {
   return (
     <StyledContainer>
-      <h2>{SubscribeData.title}</h2>
-      <p>{SubscribeData.description}</p>
+      <div className="mobile">
+        <h2>{SubscribeData.title}</h2>
+        <p>{SubscribeData.description}</p>
+      </div>
       <form>
         <input type="text" placeholder="Email address" />
         <div>
@@ -68,5 +70,23 @@ const StyledContainer = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.cartBg};
     border-radius: 0.4rem;
     padding: 1rem 1.5rem;
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: 1.4rem;
+      max-width: 100%;
+    }
+    form {
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: 0;
+    }
   }
 `;

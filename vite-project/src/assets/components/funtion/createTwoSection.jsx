@@ -32,6 +32,11 @@ const StyledContainer = styled.div`
   width: 100%;
   margin: 1.5rem auto;
   max-width: 90vw;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 
 const StyledItem = styled.div`
@@ -89,6 +94,21 @@ const StyledItem = styled.div`
     svg {
       color: white;
       font-size: 1.25rem;
+    }
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    img {
+      width: 90vw;
+    }
+    .item {
+      gap: 1rem;
+      padding: 1rem;
+    }
+    h3 {
+      font-size: 1.5rem;
     }
   }
 `;

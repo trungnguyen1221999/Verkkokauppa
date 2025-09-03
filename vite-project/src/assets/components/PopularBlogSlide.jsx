@@ -19,4 +19,7 @@ const PopularBlogSlide = () => {
 export default PopularBlogSlide;
 const StyledContainer = styled.div`
   margin-top: 13rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 `;

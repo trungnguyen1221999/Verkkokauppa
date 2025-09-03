@@ -20,4 +20,7 @@ export default MightLikeSlide2;
 
 const StyledContainer = styled.div`
   margin-top: 12rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 `;
