@@ -130,6 +130,10 @@ const StyledContainer = styled.div`
 `;
 
 const StyledItem = styled.div`
+  @media (max-width: 768px) {
+    flex: 0 0 20rem; /* width cố định, không co lại */
+    height: 44rem;
+  }
   flex: 0 0 28rem; /* width cố định, không co lại */
   height: 42rem; /* height cố định */
   display: flex;
