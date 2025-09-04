@@ -18,7 +18,10 @@ const Header = () => {
   return (
     <header>
       <Container>
-        <StyledGiHamburgerMenu onClick={() => setOpenMenu(true)} />
+        <StyledGiHamburgerMenu
+          onClick={() => setOpenMenu(true)}
+          openMenu={openMenu}
+        />
         <StyledIoMdClose
           openMenu={openMenu}
           onClick={() => setOpenMenu(false)}
@@ -70,6 +73,7 @@ const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
   cursor: pointer;
   font-size: 2.5rem;
   margin-right: 1rem;
+  display: ${({ openMenu }) => (openMenu ? "none" : "block")};
   @media (max-width: 400px) {
     font-size: 2rem;
     margin-right: 0.5rem;
@@ -94,11 +98,15 @@ const StyledContainerMobile = styled.div`
 `;
 const StyledIoMdClose = styled(IoMdClose)`
   cursor: pointer;
-  font-size: 32rem;
+  font-size: 2.5rem;
   margin-right: 1rem;
   height: auto;
+  @media (min-width: 769px) {
+    display: none;
+  }
+
   @media (max-width: 400px) {
-    font-size: 30rem;
+    font-size: 2rem;
     margin-right: 0.5rem;
   }
   display: ${({ openMenu }) => (openMenu ? "block" : "none")};
