@@ -245,6 +245,10 @@ const StyledZipPopUp = styled.div`
   border-radius: 1rem;
   width: 30rem;
   gap: 2rem;
+  @media (max-width: 769px) {
+    transform: translateY(-10rem);
+  }
+
   h2 {
     font-size: 2rem;
   }
@@ -357,6 +361,9 @@ const StylePostCodeSaveNoti = styled.div`
   border: 0.2px solid #ccc;
   background-color: #add8e6;
   scale: 1.15;
+  @media (max-width: 769px) {
+    top: 80vh;
+  }
   div {
     background-color: #06a55d;
     width: 3rem;
@@ -405,6 +412,9 @@ const StyledLocationSelection = styled.div`
   border: 0.5px solid #cccc;
   border-radius: 1rem;
   padding: 1.6rem;
+  @media (max-width: 769px) {
+    top: 40%;
+  }
   h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;

@@ -43,6 +43,8 @@ const StyledLogo = styled.svg`
   }
 `;
 const StyledMobie = styled.img`
+  position: relative;
+  z-index: 30;
   @media (min-width: 769px) {
     display: none;
   }

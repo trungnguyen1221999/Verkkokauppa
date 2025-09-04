@@ -57,7 +57,7 @@ const Search = () => {
 
         {isFocused && input.trim() && (
           <StyledDropDown>
-            <p className="suosittua">Suosittua juuri nyt</p>
+            <p className="suosittua">Hakutulokset</p>
             {suggestion.map((item, index) => (
               <DropDownElement key={index}>
                 <IoIosSearch />
@@ -71,7 +71,7 @@ const Search = () => {
         )}
       </SearchWrapper>
 
-      {isFocused && <OVerLay onClick={() => setIsFocused(false)} />}
+      {isFocused && <DarkOverlay onClick={() => setIsFocused(false)} />}
     </SearchContainer>
   );
 };
@@ -85,6 +85,7 @@ const SearchContainer = styled.div`
   display: inline-block;
   max-height: 50vw;
   padding: 0 20rem;
+
   @media (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -94,39 +95,36 @@ const SearchWrapper = styled.div`
   position: relative;
   width: 44rem;
   border: 2px solid transparent;
-  overflow: hidden;
   background-color: #cccccc3d;
-  z-index: 10;
-  overflow: visible;
   border-radius: 2.5rem;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
 
-  /* chỉ highlight khi input focus */
   ${({ $isFocused }) =>
     $isFocused &&
     `
-    border-color: #1e90ff;
-    background-color: white;
-    border-radius: 2.5rem 2.5rem 0 0;
-  `}
-  @media (max-width: 768px) {
-    width: 18rem;
-    padding: 0.25rem 0;
-    ${({ $isFocused }) =>
-      $isFocused &&
-      `
-    width: 90vw!important;
-    position: fixed;
-    top: 0.5rem;
-    left: 4.5vw;
-    right: 5vw;
-    
+      border-color: #1e90ff;
+      background-color: white;
+      border-radius: 2.5rem 2.5rem 0 0;
     `}
+
+  @media (max-width: 768px) {
+    width: ${({ $isFocused }) => ($isFocused ? "90vw" : "18rem")};
+    position: ${({ $isFocused }) => ($isFocused ? "fixed" : "relative")};
+    top: ${({ $isFocused }) => ($isFocused ? "0.5rem" : "auto")};
+    left: ${({ $isFocused }) => ($isFocused ? "50%" : "auto")};
+    transform: ${({ $isFocused }) =>
+      $isFocused ? "translateX(-50%)" : "none"};
+    padding: 0.25rem 0;
+
     input {
       font-size: 1.4rem !important;
+      transition: font-size 0.3s ease-in-out;
     }
   }
+
   @media (max-width: 400px) {
-    width: 15rem;
+    width: ${({ $isFocused }) => ($isFocused ? "90vw" : "15rem")};
     input {
       font-size: 1.2rem !important;
       width: 100% !important;
@@ -152,6 +150,10 @@ const StyleSearch = styled.div`
     border: none;
     outline: none;
     background: transparent;
+
+    @media (max-width: 400px) {
+      font-size: 1.2rem !important;
+    }
   }
 `;
 
@@ -160,6 +162,7 @@ const StyledSearchIcon = styled(IoIosSearch)`
   top: 1.1rem;
   right: 1.5rem;
   color: #636161;
+
   @media (max-width: 768px) {
     font-size: 2rem !important;
   }
@@ -173,13 +176,14 @@ const StyledDropDown = styled.div`
   top: 100%;
   left: -2px;
   right: -1.5px;
-  z-index: 1001;
+  z-index: 9;
   background-color: white;
   border: 2px solid #1e90ff;
   border-top: none;
   border-radius: 0 0 2.5rem 2.5rem;
   overflow-y: auto;
   max-height: 22rem;
+
   @media (max-width: 768px) {
     svg {
       font-size: 2 !important;
@@ -197,10 +201,6 @@ const StyledDropDown = styled.div`
     text-transform: uppercase;
     padding: 1rem 1.5rem;
   }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2rem;
-  }
 `;
 
 const DropDownElement = styled.div`
@@ -209,10 +209,12 @@ const DropDownElement = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
   &:hover {
     cursor: pointer;
     background-color: #f0f0f0;
   }
+
   div {
     display: flex;
     justify-content: space-between;
@@ -228,4 +230,12 @@ const DropDownElement = styled.div`
       font-size: 1.4rem;
     }
   }
+`;
+
+// 🔥 overlay tối nền khi input focus trên mobile
+const DarkOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(53, 53, 53, 0.4);
+  z-index: 8;
 `;
