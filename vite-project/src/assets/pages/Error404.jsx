@@ -39,18 +39,23 @@ const Error404 = () => {
 
 export default Error404;
 
+/* ---------------- Styled Components ---------------- */
+
 const StyledFont = styled.div`
   text-align: left;
   font-size: 1.4rem;
+
   @media (max-width: 400px) {
     padding-top: 1rem;
     padding-left: 2rem;
     transform: translateY(1rem);
   }
+
   a:hover {
     text-decoration: underline;
     cursor: pointer;
   }
+
   a {
     opacity: 0.7;
   }
@@ -61,6 +66,7 @@ const Styled404Container = styled.div`
   flex-direction: column;
   align-items: center;
   border: 1px solid #d3d3d3;
+
   @media (max-width: 400px) {
     border: none;
   }
@@ -68,14 +74,13 @@ const Styled404Container = styled.div`
   .heading {
     padding: 1rem;
     width: 100%;
-
     text-align: center;
     background-color: #fff;
+
     h3 {
       font-size: 3rem;
       @media (max-width: 400px) {
         font-size: 2rem;
-        text-align: center;
       }
     }
   }
@@ -98,6 +103,7 @@ const Styled404Container = styled.div`
   }
 
   .desc {
+    width: 100%;
     max-width: 60rem;
     display: flex;
     flex-direction: column;
@@ -107,16 +113,13 @@ const Styled404Container = styled.div`
     text-align: center;
     padding: 2rem;
 
-    @media (max-width: 400px) {
-      max-width: 100%;
-    }
-
     p {
       font-size: 1.5rem;
     }
 
     label {
-      width: 60rem;
+      width: 100%;
+      max-width: 60rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -144,10 +147,11 @@ const Styled404Container = styled.div`
           outline: none;
         }
       }
+    }
 
-      @media (max-width: 400px) {
-        width: 90vw;
-      }
+    @media (max-width: 400px) {
+      max-width: 90vw; /* co gọn trên mobile */
+      padding: 1rem;
     }
   }
 `;
@@ -163,18 +167,16 @@ const StyledContainer = styled.div`
 
   @media (max-width: 768px) {
     margin: 0;
-    max-width: 100%; /* chiếm full width */
+    max-width: 100%;
     padding: 0;
   }
 `;
 
 const OverLay = styled.div`
   width: 100%;
-
   background-color: #d3d3d3;
 
   @media (max-width: 400px) {
     height: 50vh;
-    transform: translateY(0);
   }
 `;
