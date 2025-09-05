@@ -19,6 +19,7 @@ import Ajankohtaista from "./assets/pages/Ajankohtaista";
 import InformationTech from "./assets/pages/catalog/InformationTech";
 import Palvelut from "./assets/pages/Palvelut";
 import Footer from "./assets/components/Footer";
+import Error404 from "./assets/pages/Error404";
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -49,6 +50,7 @@ function App() {
         <Route path="/artikkelit" element={<Oppaat />} />
         <Route path="/palvelut" element={<Palvelut />} />
         <Route path="/ajankohtaista" element={<Ajankohtaista />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </ThemeProvider>

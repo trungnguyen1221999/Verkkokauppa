@@ -36,6 +36,7 @@ const NavBarMobile = ({ open, onClose }) => {
           ))}
         </div>
       </StyledContainer>
+      {open && <StyledMobie src="/images/logo.PNG" alt="" />}
     </OVerLay>
   );
 };
@@ -83,4 +84,17 @@ const OVerLay = styled.div`
   z-index: 20;
   width: 100vw;
   height: 100vh;
+`;
+const StyledMobie = styled.img`
+  position: fixed;
+  z-index: 99;
+  top: 1.3rem;
+  left: 4.5rem;
+  @media (min-width: 769px) {
+    display: none;
+  }
+  width: 4rem;
+  @media (max-width: 400px) {
+    width: 3rem;
+  }
 `;
