@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "./logo";
 import Container from "./Container";
 import ZipStore from "./ZipStore";
@@ -11,21 +11,24 @@ import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import NavBarMobile from "./NavBarMobile";
 import { IoMdClose } from "react-icons/io";
+import { useMenu } from "./MenuContext";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const [openMenu, setOpenMenu] = useState(false);
+  const { isOpen, openMenu, closeMenu } = useMenu();
 
   return (
     <header>
       <Container>
-        <StyledGiHamburgerMenu
-          onClick={() => setOpenMenu(true)}
-          openMenu={openMenu}
-        />
-        <StyledIoMdClose
-          openMenu={openMenu}
-          onClick={() => setOpenMenu(false)}
-        />
+        <StyledGiHamburgerMenu onClick={openMenu} />
+        {isOpen && (
+          <div>
+            <StyledIoMdClose onClick={closeMenu} />
+            <NavLink to="/etusivu">
+              <StyledMobie src="/images/logo.PNG" alt="" />
+            </NavLink>
+          </div>
+        )}
         <Logo />
         <ZipCodePC />
         <Search />
@@ -33,18 +36,14 @@ const Header = () => {
         <Favorite />
         <Cart />
       </Container>
-
       <StyledContainerMobile>
         <hr className="divider" />
         <ZipCodeMobile />
       </StyledContainerMobile>
-
       <Container>
         <NavBar />
       </Container>
-
-      {/* Truyền state xuống NavBarMobile */}
-      <NavBarMobile open={openMenu} onClose={() => setOpenMenu(false)} />
+      <NavBarMobile />
     </header>
   );
 };
@@ -73,7 +72,6 @@ const StyledGiHamburgerMenu = styled(GiHamburgerMenu)`
   cursor: pointer;
   font-size: 2.5rem;
   margin-right: 1rem;
-  display: ${({ openMenu }) => (openMenu ? "none" : "block")};
   @media (max-width: 400px) {
     font-size: 2rem;
     margin-right: 0.5rem;
@@ -96,19 +94,33 @@ const StyledContainerMobile = styled.div`
     border: none;
   }
 `;
+
 const StyledIoMdClose = styled(IoMdClose)`
-  cursor: pointer;
-  font-size: 1.5rem;
-  margin-right: 1rem;
-  height: auto;
   @media (min-width: 769px) {
     display: none;
   }
-
+  cursor: pointer;
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  position: fixed;
+  top: 1.5rem;
+  left: 1rem;
   @media (max-width: 400px) {
     font-size: 2rem;
-    margin-right: 0.5rem;
   }
-  display: ${({ openMenu }) => (openMenu ? "block" : "none")};
+  z-index: 30;
+`;
+
+const StyledMobie = styled.img`
+  position: fixed;
+  top: 1rem;
+  left: 5rem;
+  @media (min-width: 769px) {
+    display: none;
+  }
+  width: 4rem;
+  @media (max-width: 400px) {
+    width: 3rem;
+  }
   z-index: 30;
 `;

@@ -20,11 +20,14 @@ import InformationTech from "./assets/pages/catalog/InformationTech";
 import Palvelut from "./assets/pages/Palvelut";
 import Footer from "./assets/components/Footer";
 import Error404 from "./assets/pages/Error404";
+import { MenuProvider } from "./assets/components/MenuContext";
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header />
+      <MenuProvider>
+        <Header />
+      </MenuProvider>
       <Routes>
         <Route path="/" element={<Navigate to="/etusivu" replace />} />
 

@@ -1,101 +1,95 @@
 import React from "react";
 import catalogData from "../CatalogData";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
 import { FaArrowRightLong } from "react-icons/fa6";
-import InformationNavMobile from "./InformationNavMobile";
+import styled from "styled-components";
+import SubCatagoryPopup from "./SubCatagoryPopup";
+import { useMenu } from "./MenuContext";
 
-const NavBarMobile = ({ open, onClose }) => {
+const NavBarMobile = () => {
+  const { isOpen, closeMenu, currentIndex, openSub } = useMenu();
+
+  if (!isOpen) return null;
+
   return (
-    <OVerLay style={{ display: open ? "block" : "none" }} onClick={onClose}>
-      <StyledContainer
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          transform: open ? "translateX(0)" : "translateX(-100%)",
-          transition: "transform 0.3s ease-in-out",
-        }}
-      >
-        <div className="nav-list first">
-          {catalogData.NavLink.toLeft.map((item, index) => (
-            <NavLink key={index} to={item.path}>
-              <div className="nav-item">
-                {catalogData.NavLink.titleLeft[index]}
+    <Overlay onClick={closeMenu}>
+      {/* Menu chính */}
+      {currentIndex === 0 && (
+        <Container onClick={(e) => e.stopPropagation()}>
+          <div className="nav-list first">
+            {catalogData.NavLink.titleLeft.map((title, index) => (
+              <div
+                key={index}
+                className="nav-item"
+                onClick={() => openSub(index + 1)}
+              >
+                {title}
                 <FaArrowRightLong style={{ opacity: 0.7 }} />
               </div>
-            </NavLink>
-          ))}
-        </div>
-        <hr />
-        <div className="nav-list">
-          {catalogData.NavLink.toRight.map((item, index) => (
-            <NavLink key={index} to={item.path}>
-              <div className="nav-item">
-                {catalogData.NavLink.titleRight[index]}
-                <FaArrowRightLong style={{ opacity: 0.7 }} />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </StyledContainer>
-      {open && <StyledMobie src="/images/logo.PNG" alt="" />}
-    </OVerLay>
+            ))}
+          </div>
+          <hr />
+          <div className="nav-list">
+            {catalogData.NavLink.titleRight.map((title, index) => (
+              <a key={index} href={catalogData.NavLink.toRight[index]}>
+                <div className="nav-item">
+                  {title}
+                  <FaArrowRightLong style={{ opacity: 0.7 }} />
+                </div>
+              </a>
+            ))}
+          </div>
+        </Container>
+      )}
+
+      {/* Sub menu */}
+      {currentIndex !== 0 && (
+        <SubCatagoryPopup data={catalogData} index={currentIndex - 1} />
+      )}
+    </Overlay>
   );
 };
 
 export default NavBarMobile;
 
-const StyledContainer = styled.nav`
-  @media (min-width: 769px) {
-    display: none;
-  }
+const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
-  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+`;
+
+const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 90vw;
   height: 100vh;
-  padding: 0 3rem 2rem;
+  max-height: 100vh;
+  overflow-y: auto;
+  background-color: #fff;
+  padding: 2rem;
+  padding-left: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: 2rem;
+
   .nav-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
-  a {
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
+
   .nav-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
   }
+
   .first {
-    padding-top: 8rem;
-  }
-`;
-const OVerLay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: ${({ theme }) => theme.colors.overlay};
-  z-index: 20;
-  width: 100vw;
-  height: 100vh;
-`;
-const StyledMobie = styled.img`
-  position: fixed;
-  z-index: 99;
-  top: 1.3rem;
-  left: 4.5rem;
-  @media (min-width: 769px) {
-    display: none;
-  }
-  width: 4rem;
-  @media (max-width: 400px) {
-    width: 3rem;
+    padding-top: 7rem;
   }
 `;
