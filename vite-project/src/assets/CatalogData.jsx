@@ -5,7 +5,12 @@ import InformationTechPopUp from "./pages/catalog/InformationTech/InformationTec
 import LifestylePopUp from "./pages/catalog/Lifestyle/LifestylePopUp";
 import PhonePopUp from "./pages/catalog/Phone/PhonePopUp";
 import PicturePopUp from "./pages/catalog/Picture/PicturePopUp";
-
+import InfomationNavData from "./pages/catalog/InformationTech/InformationNavData";
+import PictureData from "./pages/catalog/Picture/PictureData";
+import PhoneData from "./pages/catalog/Phone/PhoneData";
+import HomeApplianceData from "./pages/catalog/HomeAppliance/HomeApplianceData";
+import HomeAndGardenData from "./pages/catalog/HomeAndGarden/HomeAndGardenData";
+import LifestyleData from "./pages/catalog/Lifestyle/LifestyleData";
 const catalogData = {
   NavSection: [
     <InformationTechPopUp />,
@@ -15,6 +20,14 @@ const catalogData = {
     <HomeAppPopUp />,
     <HomeAndGardenPopUp />,
     <LifestylePopUp />,
+  ],
+  SubData: [
+    InfomationNavData,
+    PictureData,
+    PhoneData,
+    HomeApplianceData,
+    HomeAndGardenData,
+    LifestyleData,
   ],
   NavLink: {
     toLeft: [

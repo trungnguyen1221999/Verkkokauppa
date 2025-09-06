@@ -98,7 +98,7 @@ const StyledContainerMobile = styled.div`
 `;
 const StyledIoMdClose = styled(IoMdClose)`
   cursor: pointer;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-right: 1rem;
   height: auto;
   @media (min-width: 769px) {

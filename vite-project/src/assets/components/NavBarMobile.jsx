@@ -3,6 +3,7 @@ import catalogData from "../CatalogData";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FaArrowRightLong } from "react-icons/fa6";
+import InformationNavMobile from "./InformationNavMobile";
 
 const NavBarMobile = ({ open, onClose }) => {
   return (

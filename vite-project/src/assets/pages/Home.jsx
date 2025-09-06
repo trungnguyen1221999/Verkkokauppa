@@ -26,10 +26,12 @@ import BrandSlide from "../components/BrandSlide";
 import LatestBlogsSlide from "../components/LatestBlogsSlide";
 import Subscribe from "../components/Subscribe";
 import styled from "styled-components";
+import InformationNavMobile from "../components/InformationNavMobile";
 
 const Home = () => {
   return (
     <>
+      <InformationNavMobile />
       <Annoucement />
 
       <Container>
