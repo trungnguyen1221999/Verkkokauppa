@@ -4,39 +4,31 @@ const MenuContext = createContext();
 
 export const MenuProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [history, setHistory] = useState([0]); // menu gốc luôn là index 0
+  const [history, setHistory] = useState([]);
 
   const openMenu = () => {
     setIsOpen(true);
-    setHistory([0]);
+    setHistory([{ type: "root" }]);
   };
 
   const closeMenu = () => {
     setIsOpen(false);
-    setHistory([0]);
+    setHistory([]);
   };
 
-  const openSub = (index) => {
-    setHistory((prev) => [...prev, index]);
+  const openSub = (type, key, path = []) => {
+    setHistory((prev) => [...prev, { type, key, path }]);
   };
 
   const goBack = () => {
     setHistory((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev));
   };
 
-  const currentIndex = history[history.length - 1];
+  const current = history[history.length - 1] || { type: "root" };
 
   return (
     <MenuContext.Provider
-      value={{
-        isOpen,
-        openMenu,
-        closeMenu,
-        openSub,
-        goBack,
-        currentIndex,
-        history,
-      }}
+      value={{ isOpen, openMenu, closeMenu, openSub, goBack, current }}
     >
       {children}
     </MenuContext.Provider>

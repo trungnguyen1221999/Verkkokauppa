@@ -1,11 +1,18 @@
 import React from "react";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import styled from "styled-components";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { useMenu } from "./MenuContext";
 
-const SubCatagoryPopup = ({ data, index }) => {
+const SubCategoryPopup = ({ data, path = [], currentIndex }) => {
   const { goBack, openSub } = useMenu();
-  const currentData = data.SubData[index];
+
+  // Duyệt data theo path
+  let currentData = data;
+  path.forEach((key) => {
+    if (currentData.components && currentData.components[key]) {
+      currentData = { header: currentData.components[key], sum: [] };
+    }
+  });
 
   return (
     <Container onClick={(e) => e.stopPropagation()}>
@@ -15,46 +22,60 @@ const SubCatagoryPopup = ({ data, index }) => {
           <FaArrowLeftLong />
           <span>Back</span>
         </button>
-
-        <h4>{data.NavLink.titleLeft[index]}</h4>
+        {/* Nếu path rỗng, lấy title từ NavLink.titleLeft */}
+        <h4>
+          {path.length === 0
+            ? data.title || `Category ${currentIndex}`
+            : path[path.length - 1]}
+        </h4>
       </div>
 
       {/* Sub headers */}
       <div className="nav-list nav-top">
-        {currentData.header.map((item, idx) => (
-          <div
-            className="nav-item"
-            key={idx}
-            onClick={() => {
-              if (
-                currentData.components &&
-                currentData.components[item.replace(/\s+/g, "")]
-              ) {
-                openSub(idx + 1 + 1000); // tạo index riêng cho sub-sub
-              }
-            }}
-          >
-            {item}
-            <FaArrowRightLong style={{ opacity: 0.7 }} />
-          </div>
-        ))}
+        {currentData.header &&
+          currentData.header.map((item, idx) => (
+            <div
+              className="nav-item"
+              key={idx}
+              onClick={() => {
+                // Kiểm tra nếu có sub-sub menu
+                if (
+                  currentData.components &&
+                  currentData.components[item.replace(/\s+/g, "")]
+                ) {
+                  openSub(
+                    "subCategory",
+                    idx, // key của sub-sub
+                    [...path, item] // path của sub-sub
+                  );
+                }
+              }}
+            >
+              {item}
+              {currentData.components &&
+                currentData.components[item.replace(/\s+/g, "")] && (
+                  <FaArrowRightLong style={{ opacity: 0.7 }} />
+                )}
+            </div>
+          ))}
       </div>
 
       <hr />
 
       {/* Summary */}
       <div className="nav-list nav-bottom">
-        {currentData.sum.map((item, idx) => (
-          <div className="nav-item" key={idx}>
-            {item}
-          </div>
-        ))}
+        {currentData.sum &&
+          currentData.sum.map((item, idx) => (
+            <div className="nav-item" key={idx}>
+              {item}
+            </div>
+          ))}
       </div>
     </Container>
   );
 };
 
-export default SubCatagoryPopup;
+export default SubCategoryPopup;
 
 const Container = styled.div`
   position: fixed;
@@ -71,6 +92,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
   h4 {
     font-size: 1.6rem;
   }
@@ -99,11 +121,19 @@ const Container = styled.div`
     justify-content: space-between;
     cursor: pointer;
   }
+
   .nav-top {
     font-size: 1.4rem;
   }
+
   .nav-bottom {
     font-size: 1.4rem;
     font-weight: 600;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
   }
 `;
